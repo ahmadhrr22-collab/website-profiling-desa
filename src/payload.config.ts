@@ -7,6 +7,19 @@ import sharp from 'sharp'
 
 import { Users } from './collections/Users'
 import { Media } from './collections/Media'
+import { UMKM } from './collections/UMKM'
+import { Wisata } from './collections/Wisata'
+import { Galeri } from './collections/Galeri'
+import { PerangkatDesa } from './collections/PerangkatDesa'
+import { Kegiatan } from './collections/Kegiatan'
+import { Pengumuman } from './collections/Pengumuman'
+
+import { HeroBeranda } from './globals/HeroBeranda'
+import { SambutanKades } from './globals/SambutanKades'
+import { ProfilDesa } from './globals/ProfilDesa'
+import { DataDemografi } from './globals/DataDemografi'
+import { KontakSosmed } from './globals/KontakSosmed'
+import { APBDes } from './globals/APBDes'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -18,7 +31,8 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media],
+  collections: [Users, Media, UMKM, Wisata, Galeri, PerangkatDesa, Kegiatan, Pengumuman],
+  globals: [HeroBeranda, SambutanKades, ProfilDesa, DataDemografi, KontakSosmed, APBDes],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
