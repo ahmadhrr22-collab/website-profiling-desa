@@ -4,6 +4,7 @@ import path from 'path'
 import { buildConfig } from 'payload'
 import { fileURLToPath } from 'url'
 import sharp from 'sharp'
+import { uploadthingStorage } from '@payloadcms/storage-uploadthing'
 
 import { Users } from './collections/Users'
 import { Media } from './collections/Media'
@@ -49,5 +50,15 @@ export default buildConfig({
     fallback: true,
     defaultLocale: 'en',
   },
-  plugins: [],
+  plugins: [
+    uploadthingStorage({
+      collections: {
+        media: true,
+      },
+      options: {
+        token: process.env.UPLOADTHING_TOKEN,
+        acl: 'public-read',
+      },
+    }),
+  ],
 })
