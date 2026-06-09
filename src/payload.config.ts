@@ -50,15 +50,17 @@ export default buildConfig({
     fallback: true,
     defaultLocale: 'en',
   },
-  plugins: [
-    uploadthingStorage({
-      collections: {
-        media: true,
-      },
-      options: {
-        token: process.env.UPLOADTHING_TOKEN,
-        acl: 'public-read',
-      },
-    }),
-  ],
+  plugins: process.env.UPLOADTHING_TOKEN
+    ? [
+        uploadthingStorage({
+          collections: {
+            media: true,
+          },
+          options: {
+            token: process.env.UPLOADTHING_TOKEN,
+            acl: 'public-read',
+          },
+        }),
+      ]
+    : [],
 })
