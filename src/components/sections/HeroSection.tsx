@@ -27,7 +27,7 @@ export function HeroSection({ data }: HeroSectionProps) {
           alt="Latar Belakang Desa Gongseng"
           fill
           priority
-          className="object-cover object-center opacity-70 scale-105 animate-subtle-zoom"
+          className="object-cover object-center opacity-85 scale-105 animate-subtle-zoom"
           sizes="100vw"
         />
         {/* Soft overlay and gradient to blend background smoothly */}
