@@ -7,6 +7,11 @@ import { Award, Mail, Phone, Users } from 'lucide-react'
 
 export const revalidate = 0
 
+export const metadata = {
+  title: 'Perangkat Desa - Desa Gongseng',
+  description: 'Mengenal jajaran perangkat desa, pamong pelaksana, dan kepala dusun di lingkungan Desa Gongseng, Kecamatan Megaluh, Kabupaten Jombang.',
+}
+
 export default async function PerangkatDesaPage() {
   let devices: PerangkatDesa[] = []
   let hasDevices = false

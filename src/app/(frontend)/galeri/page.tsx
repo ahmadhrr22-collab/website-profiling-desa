@@ -5,6 +5,11 @@ import { Galeri } from '@/payload-types'
 
 export const revalidate = 0
 
+export const metadata = {
+  title: 'Galeri Kegiatan - Desa Gongseng',
+  description: 'Dokumentasi foto kegiatan gotong royong, pembangunan desa, potensi pertanian, kebudayaan lokal, dan pelayanan sosial kemasyarakatan di Desa Gongseng.',
+}
+
 export default async function GaleriPage() {
   let docs: Galeri[] = []
   let hasData = false

@@ -5,6 +5,11 @@ import { Kegiatan, Pengumuman } from '@/payload-types'
 
 export const revalidate = 0
 
+export const metadata = {
+  title: 'Layanan & Informasi - Desa Gongseng',
+  description: 'Portal informasi resmi Desa Gongseng. Akses pengumuman penting pemerintah desa, berita warga terbaru, serta jadwal agenda kegiatan desa.',
+}
+
 export default async function LayananInformasiPage() {
   let kegiatanDocs: Kegiatan[] = []
   let pengumumanDocs: Pengumuman[] = []

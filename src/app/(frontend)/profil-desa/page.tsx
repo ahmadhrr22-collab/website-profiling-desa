@@ -5,6 +5,11 @@ import { MapPin, Shield, Compass, Star, Map } from 'lucide-react'
 
 export const revalidate = 0
 
+export const metadata = {
+  title: 'Profil Desa - Desa Gongseng',
+  description: 'Sejarah singkat, visi & misi, batas geografis, luas wilayah, serta potensi ekonomi dan pertanian Desa Gongseng, Kecamatan Megaluh, Kabupaten Jombang.',
+}
+
 // Peta default Desa Gongseng, Megaluh, Jombang
 const MAP_DEFAULT = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15822.951554160494!2d112.18683533446657!3d-7.495289907106093!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e783fd979600e1b%3A0xc3f5e3fcfcf8a5ba!2sGongseng%2C%20Megaluh%2C%20Jombang%20Regency%2C%20East%20Java!5e0!3m2!1sen!2sid!4v1717930000000!5m2!1sen!2sid"
 

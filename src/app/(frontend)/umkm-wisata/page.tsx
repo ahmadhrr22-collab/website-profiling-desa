@@ -5,6 +5,11 @@ import { Umkm, Wisata } from '@/payload-types'
 
 export const revalidate = 0
 
+export const metadata = {
+  title: 'UMKM & Wisata - Desa Gongseng',
+  description: 'Temukan produk lokal unggulan UMKM dan berbagai destinasi wisata menarik di Desa Gongseng, Kecamatan Megaluh, Kabupaten Jombang.',
+}
+
 export default async function UMKMWisataPage() {
   let umkmDocs: Umkm[] = []
   let wisataDocs: Wisata[] = []
