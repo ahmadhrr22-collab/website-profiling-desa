@@ -69,7 +69,7 @@ export async function Footer() {
               Pusat informasi layanan administrasi, potensi wisata, dan produk unggulan UMKM lokal.
             </p>
             <p className="text-xs text-light/50 font-medium">
-              Program KKN Mahasiswa IPB University 2026.
+              Program KKN-T Mahasiswa Institut Pertanian Bogor 2026.
             </p>
           </div>
 

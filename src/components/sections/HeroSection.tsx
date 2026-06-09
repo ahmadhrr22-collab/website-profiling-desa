@@ -41,11 +41,6 @@ export function HeroSection({ data }: HeroSectionProps) {
 
       {/* Hero Content */}
       <div className="relative max-w-5xl mx-auto px-6 py-20 text-center flex flex-col items-center">
-        {/* Tag / Badge */}
-        <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold tracking-wider text-emerald-400 bg-emerald-950/60 border border-emerald-800/50 backdrop-blur-md mb-6 animate-fade-in-up">
-          KKN IPB UNIVERSITY 2026
-        </span>
-
         {/* Title */}
         <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white mb-6 max-w-4xl leading-[1.15] font-sans">
           {tagline}
