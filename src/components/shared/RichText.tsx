@@ -12,7 +12,7 @@ function renderLexicalNode(node: any, index: number): React.ReactNode {
 
   // Jika node berupa text
   if (node.type === 'text') {
-    let text = node.text
+    const text = node.text
     
     // Terapkan format (bold, italic, underline, strikethrough, dll)
     // Di Lexical format adalah bitwise mask: 1=bold, 2=italic, 4=underline, 8=strikethrough, 16=code
