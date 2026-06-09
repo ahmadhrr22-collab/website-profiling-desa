@@ -18,7 +18,7 @@
     "@payloadcms/db-postgres": "3.85.0",
     "@payloadcms/next": "3.85.0",
     "@payloadcms/richtext-lexical": "3.85.0",
-    "@payloadcms/storage-uploadthing": "^3.85.1",
+    "@payloadcms/storage-uploadthing": "3.85.0",
     "@payloadcms/ui": "3.85.0",
     "clsx": "^2.1.1",
     "cross-env": "10.1.0",
