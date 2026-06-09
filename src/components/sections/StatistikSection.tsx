@@ -1,6 +1,6 @@
 import React from 'react'
 import { DataDemografi } from '@/payload-types'
-import { Users, Home, UserCheck, Heart } from 'lucide-react'
+import { Users, Home, Mars, Venus } from 'lucide-react'
 
 interface StatistikSectionProps {
   data?: DataDemografi | null
@@ -30,7 +30,7 @@ export function StatistikSection({ data }: StatistikSectionProps) {
       value: data?.jumlahLakiLaki ?? 1210,
       suffix: ' Jiwa',
       desc: 'Penduduk berjenis kelamin laki-laki',
-      icon: UserCheck,
+      icon: Mars,
       color: 'bg-amber-500/10 text-amber-600 border-amber-200/50',
     },
     {
@@ -38,7 +38,7 @@ export function StatistikSection({ data }: StatistikSectionProps) {
       value: data?.jumlahPerempuan ?? 1240,
       suffix: ' Jiwa',
       desc: 'Penduduk berjenis kelamin perempuan',
-      icon: Heart,
+      icon: Venus,
       color: 'bg-rose-500/10 text-rose-600 border-rose-200/50',
     },
   ]
