@@ -1,7 +1,7 @@
 import React from 'react'
 import { getPayload } from '@/lib/payload'
 import { RichText } from '@/components/shared/RichText'
-import { MapPin, Shield, Compass, Star, Map } from 'lucide-react'
+import { MapPin, Shield, Compass, Star, Map, TrendingUp, TrendingDown, Coins, Scale } from 'lucide-react'
 
 export const revalidate = 0
 
@@ -16,10 +16,11 @@ const MAP_DEFAULT = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15822
 export default async function ProfilDesaPage() {
   let data = null
   let demografi = null
+  let apbdes = null
 
   try {
     const payload = await getPayload()
-    const [profilRes, demografiRes] = await Promise.allSettled([
+    const [profilRes, demografiRes, apbdesRes] = await Promise.allSettled([
       payload.findGlobal({
         slug: 'profil-desa',
         depth: 1,
@@ -28,10 +29,15 @@ export default async function ProfilDesaPage() {
         slug: 'data-demografi',
         depth: 1,
       }),
+      payload.findGlobal({
+        slug: 'apbdes',
+        depth: 1,
+      }),
     ])
 
     if (profilRes.status === 'fulfilled') data = profilRes.value
     if (demografiRes.status === 'fulfilled') demografi = demografiRes.value
+    if (apbdesRes.status === 'fulfilled') apbdes = apbdesRes.value
   } catch (error) {
     console.error('Error fetching Profil Desa data:', error)
   }
@@ -194,7 +200,118 @@ export default async function ProfilDesaPage() {
           </div>
         </section>
 
-        {/* Section 4: Potensi Desa */}
+        {/* Section 4: Transparansi Anggaran (APBDes) */}
+        {(() => {
+          const pendapatanVal = apbdes?.pendapatan ?? 1450000000
+          const belanjaVal = apbdes?.belanja ?? 1420000000
+          const tahunVal = apbdes?.tahun ?? 2026
+          const surplusVal = pendapatanVal - belanjaVal
+          
+          // Hitung persentase realisasi belanja terhadap pendapatan
+          const percent = pendapatanVal > 0 
+            ? Math.min(Math.round((belanjaVal / pendapatanVal) * 100), 100)
+            : 0
+
+          const formatRupiah = (num: number) => {
+            return new Intl.NumberFormat('id-ID', {
+              style: 'currency',
+              currency: 'IDR',
+              minimumFractionDigits: 0,
+              maximumFractionDigits: 0,
+            }).format(num)
+          }
+
+          return (
+            <section id="apbdes" className="bg-white p-8 md:p-12 rounded-3xl border border-gray-100 shadow-sm space-y-8">
+              <div className="flex flex-col md:flex-row md:items-end justify-between border-b border-gray-100 pb-6">
+                <div>
+                  <div className="w-12 h-12 rounded-2xl bg-emerald-100 flex items-center justify-center text-emerald-700 mb-4">
+                    <Scale className="w-6 h-6" />
+                  </div>
+                  <h2 className="text-2xl md:text-3xl font-extrabold text-gray-900 tracking-tight">
+                    Transparansi Anggaran (APBDes)
+                  </h2>
+                  <p className="text-sm text-gray-500 mt-1">
+                    Anggaran Pendapatan dan Belanja Desa Gongseng Tahun Anggaran {tahunVal}.
+                  </p>
+                </div>
+                <span className="mt-4 md:mt-0 inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold text-emerald-700 bg-emerald-50 border border-emerald-100 uppercase tracking-wider">
+                  Keterbukaan Informasi
+                </span>
+              </div>
+
+              {/* Grid Card Finansial */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {/* Pendapatan */}
+                <div className="bg-emerald-50/20 border border-emerald-100/60 p-6 rounded-2xl flex items-start gap-4">
+                  <div className="p-3 bg-emerald-100 rounded-xl text-emerald-700">
+                    <TrendingUp className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <span className="text-xs font-bold text-gray-500 uppercase tracking-wider block mb-1">
+                      Total Pendapatan
+                    </span>
+                    <span className="text-xl md:text-2xl font-black text-gray-900 tracking-tight block">
+                      {formatRupiah(pendapatanVal)}
+                    </span>
+                    <span className="text-[10px] text-gray-400 mt-1 block">Sumber: PADesa, DD, ADD, dll.</span>
+                  </div>
+                </div>
+
+                {/* Belanja */}
+                <div className="bg-amber-50/20 border border-amber-100/60 p-6 rounded-2xl flex items-start gap-4">
+                  <div className="p-3 bg-amber-100 rounded-xl text-amber-700">
+                    <TrendingDown className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <span className="text-xs font-bold text-gray-500 uppercase tracking-wider block mb-1">
+                      Total Belanja
+                    </span>
+                    <span className="text-xl md:text-2xl font-black text-gray-900 tracking-tight block">
+                      {formatRupiah(belanjaVal)}
+                    </span>
+                    <span className="text-[10px] text-gray-400 mt-1 block">Realisasi pembangunan & operasional</span>
+                  </div>
+                </div>
+
+                {/* Surplus/Defisit */}
+                <div className="bg-blue-50/20 border border-blue-100/60 p-6 rounded-2xl flex items-start gap-4">
+                  <div className="p-3 bg-blue-100 rounded-xl text-blue-700">
+                    <Coins className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <span className="text-xs font-bold text-gray-500 uppercase tracking-wider block mb-1">
+                      Selisih (Surplus)
+                    </span>
+                    <span className={`text-xl md:text-2xl font-black tracking-tight block ${surplusVal >= 0 ? "text-emerald-700" : "text-rose-700"}`}>
+                      {formatRupiah(surplusVal)}
+                    </span>
+                    <span className="text-[10px] text-gray-400 mt-1 block">Sisa Lebih Pembiayaan Anggaran</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Progress Bar Visualisasi Belanja */}
+              <div className="bg-gray-50 border border-gray-100/50 p-6 rounded-2xl space-y-3">
+                <div className="flex justify-between items-center text-xs font-semibold">
+                  <span className="text-gray-500 uppercase tracking-wider">Rasio Realisasi Belanja terhadap Pendapatan</span>
+                  <span className="text-emerald-700">{percent}% Terpakai</span>
+                </div>
+                <div className="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
+                  <div
+                    className="bg-emerald-600 h-full rounded-full transition-all duration-500"
+                    style={{ width: `${percent}%` }}
+                  />
+                </div>
+                <p className="text-[10px] text-gray-400 leading-relaxed pt-1">
+                  * Visualisasi ini membandingkan total belanja pembangunan dan operasional terhadap total pendapatan desa yang diperoleh pada tahun anggaran berjalan.
+                </p>
+              </div>
+            </section>
+          )
+        })()}
+
+        {/* Section 5: Potensi Desa */}
         <section id="potensi" className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start bg-white p-8 md:p-12 rounded-3xl border border-gray-100 shadow-sm">
           <div className="lg:col-span-4 flex flex-col gap-3">
             <div className="w-12 h-12 rounded-2xl bg-emerald-100 flex items-center justify-center text-emerald-700">
