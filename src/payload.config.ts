@@ -25,6 +25,8 @@ import { APBDes } from './globals/APBDes'
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
+console.log('Payload Config: UPLOADTHING_TOKEN is present:', !!process.env.UPLOADTHING_TOKEN)
+
 export default buildConfig({
   admin: {
     user: Users.slug,
