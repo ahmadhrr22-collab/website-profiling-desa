@@ -27,12 +27,12 @@ export function HeroSection({ data }: HeroSectionProps) {
           alt="Latar Belakang Desa Gongseng"
           fill
           priority
-          className="object-cover object-center opacity-40 scale-105 animate-subtle-zoom"
+          className="object-cover object-center opacity-70 scale-105 animate-subtle-zoom"
           sizes="100vw"
         />
-        {/* Gradients to blend background */}
-        <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/40 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-r from-gray-950/70 via-transparent to-gray-950/30" />
+        {/* Soft overlay and gradient to blend background smoothly */}
+        <div className="absolute inset-0 bg-black/35" />
+        <div className="absolute inset-0 bg-gradient-to-t from-gray-950/90 via-transparent to-black/20" />
       </div>
 
       {/* Decorative Blur Shapes */}
