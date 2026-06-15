@@ -2,6 +2,7 @@ import type { GlobalConfig } from 'payload'
 
 export const APBDes: GlobalConfig = {
   slug: 'apbdes',
+  label: 'APBDes',
   admin: {
     group: 'Informasi Desa',
   },

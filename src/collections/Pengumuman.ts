@@ -2,6 +2,10 @@ import type { CollectionConfig } from 'payload'
 
 export const Pengumuman: CollectionConfig = {
   slug: 'pengumuman',
+  labels: {
+    singular: 'Pengumuman',
+    plural: 'Pengumuman',
+  },
   admin: {
     useAsTitle: 'judul',
     defaultColumns: ['judul', 'tanggalTerbit', 'tanggalBerakhir', 'penting'],

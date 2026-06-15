@@ -2,6 +2,10 @@ import type { CollectionConfig } from 'payload'
 
 export const Wisata: CollectionConfig = {
   slug: 'wisata',
+  labels: {
+    singular: 'Wisata',
+    plural: 'Wisata',
+  },
   admin: {
     useAsTitle: 'nama',
     defaultColumns: ['nama', 'kategori', 'tiket', 'jamBuka', 'featured'],

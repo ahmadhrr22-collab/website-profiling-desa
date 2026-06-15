@@ -2,6 +2,10 @@ import type { CollectionConfig } from 'payload'
 
 export const UMKM: CollectionConfig = {
   slug: 'umkm',
+  labels: {
+    singular: 'UMKM',
+    plural: 'UMKM',
+  },
   admin: {
     useAsTitle: 'nama',
     defaultColumns: ['nama', 'kategori', 'featured', 'aktif'],

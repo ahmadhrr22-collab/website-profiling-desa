@@ -2,6 +2,10 @@ import type { CollectionConfig } from 'payload'
 
 export const Galeri: CollectionConfig = {
   slug: 'galeri',
+  labels: {
+    singular: 'Galeri',
+    plural: 'Galeri',
+  },
   admin: {
     useAsTitle: 'judul',
     defaultColumns: ['judul', 'kategori', 'tanggal'],
