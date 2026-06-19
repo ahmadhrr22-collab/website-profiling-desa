@@ -105,7 +105,6 @@ export interface Config {
     'profil-desa': ProfilDesa;
     'data-demografi': DataDemografi;
     'kontak-sosmed': KontakSosmed;
-    apbdes: Apbde;
   };
   globalsSelect: {
     'hero-beranda': HeroBerandaSelect<false> | HeroBerandaSelect<true>;
@@ -113,7 +112,6 @@ export interface Config {
     'profil-desa': ProfilDesaSelect<false> | ProfilDesaSelect<true>;
     'data-demografi': DataDemografiSelect<false> | DataDemografiSelect<true>;
     'kontak-sosmed': KontakSosmedSelect<false> | KontakSosmedSelect<true>;
-    apbdes: ApbdesSelect<false> | ApbdesSelect<true>;
   };
   locale: 'en';
   widgets: {
@@ -813,18 +811,6 @@ export interface KontakSosmed {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "apbdes".
- */
-export interface Apbde {
-  id: number;
-  pendapatan?: number | null;
-  belanja?: number | null;
-  tahun?: number | null;
-  updatedAt?: string | null;
-  createdAt?: string | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "hero-beranda_select".
  */
 export interface HeroBerandaSelect<T extends boolean = true> {
@@ -886,18 +872,6 @@ export interface KontakSosmedSelect<T extends boolean = true> {
   email?: T;
   alamat?: T;
   instagram?: T;
-  updatedAt?: T;
-  createdAt?: T;
-  globalType?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "apbdes_select".
- */
-export interface ApbdesSelect<T extends boolean = true> {
-  pendapatan?: T;
-  belanja?: T;
-  tahun?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

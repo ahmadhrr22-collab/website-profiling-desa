@@ -20,7 +20,6 @@ import { SambutanKades } from './globals/SambutanKades'
 import { ProfilDesa } from './globals/ProfilDesa'
 import { DataDemografi } from './globals/DataDemografi'
 import { KontakSosmed } from './globals/KontakSosmed'
-import { APBDes } from './globals/APBDes'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -35,7 +34,7 @@ export default buildConfig({
     },
   },
   collections: [Users, Media, UMKM, Wisata, Galeri, PerangkatDesa, Kegiatan, Pengumuman],
-  globals: [HeroBeranda, SambutanKades, ProfilDesa, DataDemografi, KontakSosmed, APBDes],
+  globals: [HeroBeranda, SambutanKades, ProfilDesa, DataDemografi, KontakSosmed],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
