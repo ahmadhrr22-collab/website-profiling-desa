@@ -2,8 +2,9 @@
 
 import React, { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
-import { Menu, X, Landmark } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 interface NavLink {
@@ -33,8 +34,15 @@ export function Navbar() {
         <div className="flex items-center justify-between h-16 sm:h-20">
           {/* Logo & Title */}
           <Link href="/" className="flex items-center gap-3 group" onClick={closeMenu}>
-            <div className="p-2 bg-secondary rounded-lg group-hover:bg-accent transition-colors">
-              <Landmark className="w-6 h-6 text-white" />
+            <div className="relative w-10 h-10 overflow-hidden rounded-lg bg-white p-0.5 flex items-center justify-center border border-secondary/20 shadow-sm shrink-0">
+              <Image
+                src="/images/logo-kabupaten-jombang.jpg"
+                alt="Logo Kabupaten Jombang"
+                width={36}
+                height={36}
+                className="object-contain"
+                priority
+              />
             </div>
             <div>
               <h1 className="text-lg sm:text-xl font-bold tracking-tight text-white leading-tight">

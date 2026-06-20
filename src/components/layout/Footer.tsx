@@ -1,6 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
-import { MapPin, Mail, MessageSquare, Landmark } from 'lucide-react'
+import Image from 'next/image'
+import { MapPin, Mail, MessageSquare } from 'lucide-react'
 import { getPayload } from '@/lib/payload'
 
 // Custom Instagram SVG icon since brand icons are removed in recent lucide-react versions
@@ -59,8 +60,14 @@ export async function Footer() {
           {/* Kolom 1: Profil Singkat */}
           <div className="space-y-4">
             <div className="flex items-center gap-3">
-              <div className="p-2 bg-secondary rounded-lg">
-                <Landmark className="w-6 h-6 text-white" />
+              <div className="relative w-10 h-10 overflow-hidden rounded-lg bg-white p-0.5 flex items-center justify-center border border-secondary/20 shadow-sm shrink-0">
+                <Image
+                  src="/images/logo-kabupaten-jombang.jpg"
+                  alt="Logo Kabupaten Jombang"
+                  width={36}
+                  height={36}
+                  className="object-contain"
+                />
               </div>
               <span className="text-lg font-bold tracking-wider">Desa Gongseng</span>
             </div>
