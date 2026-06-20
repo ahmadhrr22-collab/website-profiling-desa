@@ -3,7 +3,7 @@ import { getPayload } from '@/lib/payload'
 import { LayananInformasiTabs } from '@/components/shared/LayananInformasiTabs'
 import { Kegiatan, Pengumuman } from '@/payload-types'
 
-export const revalidate = 0
+export const revalidate = 60
 
 export const metadata = {
   title: 'Layanan & Informasi - Desa Gongseng',

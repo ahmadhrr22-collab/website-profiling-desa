@@ -3,7 +3,7 @@ import { getPayload } from '@/lib/payload'
 import { UMKMWisataTabs } from '@/components/shared/UMKMWisataTabs'
 import { Umkm, Wisata } from '@/payload-types'
 
-export const revalidate = 0
+export const revalidate = 60
 
 export const metadata = {
   title: 'UMKM & Wisata - Desa Gongseng',

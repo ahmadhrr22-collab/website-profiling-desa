@@ -3,7 +3,7 @@ import { getPayload } from '@/lib/payload'
 import { RichText } from '@/components/shared/RichText'
 import { MapPin, Shield, Compass, Star, Map } from 'lucide-react'
 
-export const revalidate = 0
+export const revalidate = 60
 
 export const metadata = {
   title: 'Profil Desa - Desa Gongseng',

@@ -5,7 +5,7 @@ import { PerangkatDesa, Media } from '@/payload-types'
 import { WAButton } from '@/components/shared/WAButton'
 import { Award, Mail, Phone, Users } from 'lucide-react'
 
-export const revalidate = 0
+export const revalidate = 60
 
 export const metadata = {
   title: 'Perangkat Desa - Desa Gongseng',

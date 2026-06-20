@@ -9,7 +9,7 @@ import Link from 'next/link'
 import { BookOpen, Award, FileText, ShoppingBag, Image as ImageIcon, Settings, ArrowRight } from 'lucide-react'
 
 // Menandakan page ini selalu dinamis agar fetch data terupdate dari database
-export const revalidate = 0
+export const revalidate = 60
 
 export default async function HomePage() {
   let payload
