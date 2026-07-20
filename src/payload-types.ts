@@ -783,13 +783,29 @@ export interface ProfilDesa {
  */
 export interface DataDemografi {
   id: number;
-  /**
-   * Total seluruh warga Desa Gongseng.
-   */
-  jumlahPenduduk?: number | null;
-  jumlahKK?: number | null;
-  jumlahLakiLaki?: number | null;
-  jumlahPerempuan?: number | null;
+  jumlahPenduduk: number;
+  jumlahKK: number;
+  jumlahLakiLaki: number;
+  jumlahPerempuan: number;
+  kelompokUsia?: {
+    balita?: number | null;
+    anak?: number | null;
+    produktif?: number | null;
+    lansia?: number | null;
+  };
+  wilayah?: {
+    dusun?: number | null;
+    rt?: number | null;
+    rw?: number | null;
+  };
+  luasLahan?: {
+    sawah?: number | null;
+    pekarangan?: number | null;
+    tegalan?: number | null;
+  };
+  produktivitasPadi?: number | null;
+  jumlahKelompokTani?: number | null;
+  jumlahAnggotaTani?: number | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -859,6 +875,31 @@ export interface DataDemografiSelect<T extends boolean = true> {
   jumlahKK?: T;
   jumlahLakiLaki?: T;
   jumlahPerempuan?: T;
+  kelompokUsia?:
+    | T
+    | {
+        balita?: T;
+        anak?: T;
+        produktif?: T;
+        lansia?: T;
+      };
+  wilayah?:
+    | T
+    | {
+        dusun?: T;
+        rt?: T;
+        rw?: T;
+      };
+  luasLahan?:
+    | T
+    | {
+        sawah?: T;
+        pekarangan?: T;
+        tegalan?: T;
+      };
+  produktivitasPadi?: T;
+  jumlahKelompokTani?: T;
+  jumlahAnggotaTani?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
