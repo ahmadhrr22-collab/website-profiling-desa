@@ -15,9 +15,10 @@ export default async function LayananInformasiPage() {
   let pengumumanDocs: Pengumuman[] = []
   let hasData = false
 
+  let kontakData: any = null
   try {
     const payload = await getPayload()
-    const [kegiatanRes, pengumumanRes] = await Promise.allSettled([
+    const [kegiatanRes, pengumumanRes, kontakRes] = await Promise.allSettled([
       payload.find({
         collection: 'kegiatan',
         sort: '-tanggal',
@@ -26,6 +27,10 @@ export default async function LayananInformasiPage() {
       payload.find({
         collection: 'pengumuman',
         sort: '-tanggalTerbit',
+        depth: 1,
+      }),
+      payload.findGlobal({
+        slug: 'kontak-sosmed',
         depth: 1,
       }),
     ])
@@ -37,6 +42,9 @@ export default async function LayananInformasiPage() {
     if (pengumumanRes.status === 'fulfilled' && pengumumanRes.value.docs.length > 0) {
       pengumumanDocs = pengumumanRes.value.docs
       hasData = true
+    }
+    if (kontakRes.status === 'fulfilled') {
+      kontakData = kontakRes.value
     }
   } catch (error) {
     console.error('Error fetching Layanan & Informasi data:', error)
@@ -193,7 +201,11 @@ export default async function LayananInformasiPage() {
 
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-6 py-16">
-        <LayananInformasiTabs kegiatanItems={finalKegiatan} pengumumanItems={finalPengumuman} />
+        <LayananInformasiTabs 
+          kegiatanItems={finalKegiatan} 
+          pengumumanItems={finalPengumuman} 
+          kontak={kontakData}
+        />
       </main>
     </div>
   )

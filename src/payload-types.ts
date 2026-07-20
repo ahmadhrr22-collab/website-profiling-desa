@@ -819,6 +819,10 @@ export interface KontakSosmed {
    * Tulis tanpa angka 0 di depan (contoh: 81234567890).
    */
   nomorWA: string;
+  /**
+   * Tulis tanpa angka 0 di depan (contoh: 81319670828). Jika dikosongkan, pengaduan akan diarahkan ke Nomor WhatsApp Kantor Desa di atas.
+   */
+  nomorWALapor?: string | null;
   email: string;
   alamat: string;
   instagram?: string | null;
@@ -910,6 +914,7 @@ export interface DataDemografiSelect<T extends boolean = true> {
  */
 export interface KontakSosmedSelect<T extends boolean = true> {
   nomorWA?: T;
+  nomorWALapor?: T;
   email?: T;
   alamat?: T;
   instagram?: T;

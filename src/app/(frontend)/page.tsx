@@ -6,7 +6,7 @@ import { SambutanSection } from '@/components/sections/SambutanSection'
 import { PengumumanSection } from '@/components/sections/PengumumanSection'
 import { UMKMFeaturedSection } from '@/components/sections/UMKMFeaturedSection'
 import Link from 'next/link'
-import { BookOpen, Award, FileText, ShoppingBag, Image as ImageIcon, Settings, ArrowRight } from 'lucide-react'
+import { BookOpen, Award, FileText, ShoppingBag, Image as ImageIcon, Settings, ArrowRight, MessageSquare } from 'lucide-react'
 
 // Menandakan page ini selalu dinamis agar fetch data terupdate dari database
 export const revalidate = 60
@@ -101,11 +101,11 @@ export default async function HomePage() {
       color: 'text-rose-600 bg-rose-50 border-rose-100',
     },
     {
-      title: 'Admin Portal',
-      desc: 'Portal khusus perangkat desa untuk memperbarui konten website.',
-      href: '/admin',
-      icon: Settings,
-      color: 'text-gray-600 bg-gray-50 border-gray-100',
+      title: 'Lapor Desa',
+      desc: 'Sampaikan pengaduan, saran, atau aspirasi secara langsung via WhatsApp.',
+      href: '/layanan-informasi?tab=lapor',
+      icon: MessageSquare,
+      color: 'text-teal-600 bg-teal-50 border-teal-100',
     },
   ]
 
