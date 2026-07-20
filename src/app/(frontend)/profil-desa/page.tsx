@@ -1,7 +1,7 @@
 import React from 'react'
 import { getPayload } from '@/lib/payload'
 import { RichText } from '@/components/shared/RichText'
-import { MapPin, Shield, Compass, Star, Map, BarChart3, Users, Sprout } from 'lucide-react'
+import { MapPin, Shield, Compass, Star, Map } from 'lucide-react'
 
 export const revalidate = 60
 
@@ -194,142 +194,7 @@ export default async function ProfilDesaPage() {
           </div>
         </section>
 
-        {/* Section 4: Statistik & Demografi Desa */}
-        {demografi && (
-          <section id="statistik-desa" className="space-y-12 bg-white p-8 md:p-12 rounded-3xl border border-gray-100 shadow-sm">
-            <div className="flex flex-col md:flex-row md:items-end justify-between border-b border-gray-100 pb-6">
-              <div>
-                <div className="w-12 h-12 rounded-2xl bg-emerald-100 flex items-center justify-center text-emerald-700 mb-4">
-                  <BarChart3 className="w-6 h-6" />
-                </div>
-                <h2 className="text-2xl md:text-3xl font-extrabold text-gray-900 tracking-tight">
-                  Statistik & Demografi Desa
-                </h2>
-                <p className="text-sm text-gray-500 mt-1">
-                  Data kependudukan, wilayah administratif, dan statistik pertanian Desa Gongseng.
-                </p>
-              </div>
-            </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              {/* Sub-section 1: Kependudukan & Wilayah */}
-              <div className="space-y-6">
-                <h3 className="text-lg font-bold text-gray-900 flex items-center gap-2 border-b border-gray-100 pb-3">
-                  <Users className="w-5 h-5 text-emerald-600" />
-                  Kependudukan & Kewilayahan
-                </h3>
-                
-                {/* Grid Mini Stats */}
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="bg-gray-50 p-4 rounded-xl">
-                    <span className="text-xs text-gray-500 block mb-1">Total Penduduk</span>
-                    <span className="text-lg font-bold text-gray-900">{demografi.jumlahPenduduk ? `${new Intl.NumberFormat('id-ID').format(demografi.jumlahPenduduk)} Jiwa` : '-'}</span>
-                  </div>
-                  <div className="bg-gray-50 p-4 rounded-xl">
-                    <span className="text-xs text-gray-500 block mb-1">Jumlah KK</span>
-                    <span className="text-lg font-bold text-gray-900">{demografi.jumlahKK ? `${new Intl.NumberFormat('id-ID').format(demografi.jumlahKK)} KK` : '-'}</span>
-                  </div>
-                  <div className="bg-gray-50 p-4 rounded-xl">
-                    <span className="text-xs text-gray-500 block mb-1">Laki-Laki</span>
-                    <span className="text-lg font-semibold text-gray-900">{demografi.jumlahLakiLaki ? `${new Intl.NumberFormat('id-ID').format(demografi.jumlahLakiLaki)} Jiwa` : '-'}</span>
-                  </div>
-                  <div className="bg-gray-50 p-4 rounded-xl">
-                    <span className="text-xs text-gray-500 block mb-1">Perempuan</span>
-                    <span className="text-lg font-semibold text-gray-900">{demografi.jumlahPerempuan ? `${new Intl.NumberFormat('id-ID').format(demografi.jumlahPerempuan)} Jiwa` : '-'}</span>
-                  </div>
-                </div>
-
-                {/* Kelompok Usia */}
-                {demografi.kelompokUsia && (
-                  <div className="bg-gray-50/50 p-5 rounded-2xl border border-gray-100 space-y-4">
-                    <h4 className="text-sm font-bold text-gray-700 uppercase tracking-wider">Kelompok Usia</h4>
-                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                      <div>
-                        <span className="text-xs text-gray-400 block">Balita (0-5 th)</span>
-                        <span className="text-base font-bold text-gray-800">{demografi.kelompokUsia.balita ? `${new Intl.NumberFormat('id-ID').format(demografi.kelompokUsia.balita)}` : '-'}</span>
-                      </div>
-                      <div>
-                        <span className="text-xs text-gray-400 block">Anak (6-17 th)</span>
-                        <span className="text-base font-bold text-gray-800">{demografi.kelompokUsia.anak ? `${new Intl.NumberFormat('id-ID').format(demografi.kelompokUsia.anak)}` : '-'}</span>
-                      </div>
-                      <div>
-                        <span className="text-xs text-gray-400 block">Produktif (18-59 th)</span>
-                        <span className="text-base font-bold text-gray-800">{demografi.kelompokUsia.produktif ? `${new Intl.NumberFormat('id-ID').format(demografi.kelompokUsia.produktif)}` : '-'}</span>
-                      </div>
-                      <div>
-                        <span className="text-xs text-gray-400 block">Lansia (≥60 th)</span>
-                        <span className="text-base font-bold text-gray-800">{demografi.kelompokUsia.lansia ? `${new Intl.NumberFormat('id-ID').format(demografi.kelompokUsia.lansia)}` : '-'}</span>
-                      </div>
-                    </div>
-                  </div>
-                )}
-
-                {/* Kewilayahan */}
-                {demografi.wilayah && (
-                  <div className="grid grid-cols-3 gap-4 border-t border-gray-100 pt-4">
-                    <div className="text-center">
-                      <span className="text-xs text-gray-400 block">Dusun</span>
-                      <span className="text-xl font-black text-emerald-700">{demografi.wilayah.dusun ?? '-'}</span>
-                    </div>
-                    <div className="text-center border-x border-gray-100">
-                      <span className="text-xs text-gray-400 block">RT</span>
-                      <span className="text-xl font-black text-emerald-700">{demografi.wilayah.rt ?? '-'}</span>
-                    </div>
-                    <div className="text-center">
-                      <span className="text-xs text-gray-400 block">RW</span>
-                      <span className="text-xl font-black text-emerald-700">{demografi.wilayah.rw ?? '-'}</span>
-                    </div>
-                  </div>
-                )}
-              </div>
-
-              {/* Sub-section 2: Data Pertanian */}
-              <div className="space-y-6 lg:border-l border-gray-100 lg:pl-8">
-                <h3 className="text-lg font-bold text-gray-900 flex items-center gap-2 border-b border-gray-100 pb-3">
-                  <Sprout className="w-5 h-5 text-emerald-600" />
-                  Sektor Pertanian (IPW)
-                </h3>
-
-                {/* Luas Lahan */}
-                {demografi.luasLahan && (
-                  <div className="space-y-3">
-                    <span className="text-xs font-bold text-gray-400 uppercase tracking-wider block">Luas Penggunaan Lahan</span>
-                    <div className="grid grid-cols-3 gap-4">
-                      <div className="bg-emerald-50/30 p-4 rounded-xl border border-emerald-100/50">
-                        <span className="text-[10px] text-emerald-800 uppercase font-semibold block mb-0.5">Sawah</span>
-                        <span className="text-lg font-bold text-gray-900">{demografi.luasLahan.sawah ?? '-'} <span className="text-xs font-normal text-gray-500">Ha</span></span>
-                      </div>
-                      <div className="bg-amber-50/30 p-4 rounded-xl border border-amber-100/50">
-                        <span className="text-[10px] text-amber-800 uppercase font-semibold block mb-0.5">Pekarangan</span>
-                        <span className="text-lg font-bold text-gray-900">{demografi.luasLahan.pekarangan ?? '-'} <span className="text-xs font-normal text-gray-500">Ha</span></span>
-                      </div>
-                      <div className="bg-blue-50/30 p-4 rounded-xl border border-blue-100/50">
-                        <span className="text-[10px] text-blue-800 uppercase font-semibold block mb-0.5">Tegalan</span>
-                        <span className="text-lg font-bold text-gray-900">{demografi.luasLahan.tegalan ?? '-'} <span className="text-xs font-normal text-gray-500">Ha</span></span>
-                      </div>
-                    </div>
-                  </div>
-                )}
-
-                {/* Produktivitas & Kelompok Tani */}
-                <div className="space-y-4 pt-2">
-                  <div className="flex justify-between items-center py-2 border-b border-gray-50 text-sm">
-                    <span className="text-gray-500">Produktivitas Rata-rata Padi</span>
-                    <span className="font-bold text-gray-900">{demografi.produktivitasPadi ?? '-'} Ton / Ha</span>
-                  </div>
-                  <div className="flex justify-between items-center py-2 border-b border-gray-50 text-sm">
-                    <span className="text-gray-500">Jumlah Kelompok Tani</span>
-                    <span className="font-bold text-gray-900">{demografi.jumlahKelompokTani ?? '-'} Kelompok</span>
-                  </div>
-                  <div className="flex justify-between items-center py-2 text-sm">
-                    <span className="text-gray-500">Total Anggota Kelompok Tani</span>
-                    <span className="font-bold text-gray-900">{demografi.jumlahAnggotaTani ?? '-'} Orang</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-        )}
 
         {/* Section 5: Potensi Desa */}
         <section id="potensi" className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start bg-white p-8 md:p-12 rounded-3xl border border-gray-100 shadow-sm">
