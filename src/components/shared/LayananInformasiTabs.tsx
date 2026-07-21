@@ -41,9 +41,15 @@ export function LayananInformasiTabs({ kegiatanItems, pengumumanItems, kontak }:
 
   // Form State Lapor Desa
   const [nama, setNama] = useState('')
+  const [dusun, setDusun] = useState('Gongseng 1')
+  const [rt, setRt] = useState('')
+  const [rw, setRw] = useState('')
   const [kategori, setKategori] = useState('Infrastruktur & Jalan Rusak')
   const [laporan, setLaporan] = useState('')
+  
   const [errorNama, setErrorNama] = useState(false)
+  const [errorRt, setErrorRt] = useState(false)
+  const [errorRw, setErrorRw] = useState(false)
   const [errorLaporan, setErrorLaporan] = useState(false)
 
   // Handle URL parameters for default tab
@@ -73,6 +79,20 @@ export function LayananInformasiTabs({ kegiatanItems, pengumumanItems, kontak }:
       hasError = true
     } else {
       setErrorNama(false)
+    }
+
+    if (!rt.trim()) {
+      setErrorRt(true)
+      hasError = true
+    } else {
+      setErrorRt(false)
+    }
+
+    if (!rw.trim()) {
+      setErrorRw(true)
+      hasError = true
+    } else {
+      setErrorRw(false)
     }
 
     if (!laporan.trim()) {
@@ -105,6 +125,7 @@ export function LayananInformasiTabs({ kegiatanItems, pengumumanItems, kontak }:
 Saya ingin menyampaikan pengaduan/aspirasi warga melalui website resmi desa:
 
 *Nama Pelapor:* ${nama}
+*Asal Wilayah:* Dusun ${dusun}, RT ${rt} / RW ${rw}
 *Kategori:* ${kategori}
 *Detail Laporan:*
 ${laporan}
@@ -408,6 +429,64 @@ Mohon ditindaklanjuti. Terima kasih.`
                   <User className="w-4 h-4 text-gray-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
                 </div>
                 {errorNama && <p className="text-[10px] text-red-500">Nama pelapor wajib diisi.</p>}
+              </div>
+
+              {/* Dusun, RT, RW Fields */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                {/* Dusun Select */}
+                <div className="space-y-1.5">
+                  <label className="text-xs font-semibold text-gray-500 block">Dusun *</label>
+                  <select
+                    value={dusun}
+                    onChange={(e) => setDusun(e.target.value)}
+                    className="w-full px-3 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-emerald-500 bg-white"
+                  >
+                    <option value="Gongseng 1">Gongseng 1</option>
+                    <option value="Gongseng 2">Gongseng 2</option>
+                    <option value="Krandekan">Krandekan</option>
+                    <option value="Garu Rejo">Garu Rejo</option>
+                  </select>
+                </div>
+                {/* RT Input */}
+                <div className="space-y-1.5">
+                  <label className="text-xs font-semibold text-gray-500 block">RT *</label>
+                  <input
+                    type="text"
+                    value={rt}
+                    onChange={(e) => {
+                      setRt(e.target.value)
+                      setErrorRt(false)
+                    }}
+                    placeholder="Contoh: 03"
+                    className={cn(
+                      "w-full px-4 py-2.5 rounded-xl border text-sm focus:outline-none transition-all",
+                      errorRt 
+                        ? "border-red-300 focus:border-red-500 bg-red-50/10" 
+                        : "border-gray-200 focus:border-emerald-500"
+                    )}
+                  />
+                  {errorRt && <p className="text-[10px] text-red-500">RT wajib diisi.</p>}
+                </div>
+                {/* RW Input */}
+                <div className="space-y-1.5">
+                  <label className="text-xs font-semibold text-gray-500 block">RW *</label>
+                  <input
+                    type="text"
+                    value={rw}
+                    onChange={(e) => {
+                      setRw(e.target.value)
+                      setErrorRw(false)
+                    }}
+                    placeholder="Contoh: 01"
+                    className={cn(
+                      "w-full px-4 py-2.5 rounded-xl border text-sm focus:outline-none transition-all",
+                      errorRw 
+                        ? "border-red-300 focus:border-red-500 bg-red-50/10" 
+                        : "border-gray-200 focus:border-emerald-500"
+                    )}
+                  />
+                  {errorRw && <p className="text-[10px] text-red-500">RW wajib diisi.</p>}
+                </div>
               </div>
 
               {/* Kategori Select */}
