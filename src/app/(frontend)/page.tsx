@@ -126,6 +126,36 @@ export default async function HomePage() {
       {/* 5. UMKM Unggulan */}
       <UMKMFeaturedSection items={umkmDocs} />
 
+      {/* 5.5. Banner Call to Action (CTA) Lapor Desa */}
+      <section className="py-16 bg-emerald-900 text-white relative overflow-hidden">
+        {/* Background decorative patterns */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(16,185,129,0.15),transparent_60%)] animate-pulse duration-5000" />
+        <div className="absolute top-0 right-0 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
+        
+        <div className="max-w-7xl mx-auto px-6 relative z-10 flex flex-col lg:flex-row items-center justify-between gap-8">
+          <div className="space-y-4 max-w-3xl text-center lg:text-left">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-950/80 text-emerald-300 border border-emerald-800/60 uppercase tracking-wider">
+              Layanan Aspirasi & Pengaduan
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight leading-tight">
+              Punya Masalah atau Aspirasi untuk Gongseng?
+            </h2>
+            <p className="text-emerald-100/90 text-sm sm:text-base leading-relaxed">
+              Laporkan keluhan infrastruktur, masalah sampah, irigasi pertanian, atau sampaikan saran pembangunan secara instan ke WhatsApp resmi Pemerintah Desa Gongseng.
+            </p>
+          </div>
+          <div className="flex flex-shrink-0">
+            <Link
+              href="/layanan-informasi?tab=lapor"
+              className="inline-flex items-center gap-2.5 px-8 py-4 bg-amber-500 hover:bg-amber-400 active:scale-95 text-gray-950 font-bold rounded-xl shadow-lg hover:shadow-amber-500/20 transition-all duration-200 cursor-pointer text-sm sm:text-base"
+            >
+              <MessageSquare className="w-5 h-5 text-gray-950" />
+              <span>Mulai Lapor Desa</span>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* 6. Akses Cepat / Pintasan Layanan */}
       <section className="py-20 bg-white border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-6">
