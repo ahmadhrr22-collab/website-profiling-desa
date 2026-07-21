@@ -109,6 +109,8 @@ Saya ingin menyampaikan pengaduan/aspirasi warga melalui website resmi desa:
 *Detail Laporan:*
 ${laporan}
 
+*(Saya akan mengirimkan foto selfie di chat ini sebagai bukti verifikasi identitas warga)*
+
 Mohon ditindaklanjuti. Terima kasih.`
 
     const waUrl = `https://wa.me/62${cleanWA}?text=${encodeURIComponent(pesanText)}`
@@ -367,11 +369,11 @@ Mohon ditindaklanjuti. Terima kasih.`
                 </div>
                 <div className="flex gap-3">
                   <div className="w-5 h-5 rounded-full bg-emerald-50 text-emerald-700 font-bold flex items-center justify-center flex-shrink-0">2</div>
-                  <p>Klik tombol <strong>"Kirim via WhatsApp"</strong> untuk mengirim pesan pengaduan resmi.</p>
+                  <p>Klik tombol <strong>"Kirim via WhatsApp"</strong> untuk membuka obrolan chat WhatsApp.</p>
                 </div>
                 <div className="flex gap-3">
                   <div className="w-5 h-5 rounded-full bg-emerald-50 text-emerald-700 font-bold flex items-center justify-center flex-shrink-0">3</div>
-                  <p>Pemerintah Desa akan menerima laporan Anda dan melakukan tindak lanjut secepatnya.</p>
+                  <p>Kirimkan <strong>foto selfie Anda</strong> langsung di chat WhatsApp tersebut sebagai bukti verifikasi identitas warga.</p>
                 </div>
               </div>
 
