@@ -18,14 +18,7 @@ export const KontakSosmed: GlobalConfig = {
         description: 'Tulis tanpa angka 0 di depan (contoh: 81234567890).',
       },
     },
-    {
-      name: 'nomorWALapor',
-      type: 'text',
-      label: 'Nomor WhatsApp Lapor Desa (Pengaduan)',
-      admin: {
-        description: 'Tulis tanpa angka 0 di depan (contoh: 81319670828). Jika dikosongkan, pengaduan akan diarahkan ke Nomor WhatsApp Kantor Desa di atas.',
-      },
-    },
+
     {
       name: 'email',
       type: 'text',
