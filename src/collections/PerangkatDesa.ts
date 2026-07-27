@@ -33,8 +33,7 @@ export const PerangkatDesa: CollectionConfig = {
       name: 'foto',
       type: 'upload',
       relationTo: 'media',
-      required: true,
-      label: 'Foto Resmi',
+      label: 'Foto Resmi (Opsional)',
     },
     {
       name: 'urutan',

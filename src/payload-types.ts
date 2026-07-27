@@ -290,7 +290,7 @@ export interface PerangkatDesa {
   id: number;
   nama: string;
   jabatan: string;
-  foto: number | Media;
+  foto?: (number | null) | Media;
   /**
    * Untuk menentukan siapa yang tampil duluan di bagan struktur (contoh: Kepala Desa = 1, Sekretaris = 2, dst).
    */
