@@ -1,9 +1,10 @@
 import React from 'react'
 import Image from 'next/image'
 import { getPayload } from '@/lib/payload'
-import { PerangkatDesa, Media } from '@/payload-types'
+import { PerangkatDesa } from '@/payload-types'
 import { WAButton } from '@/components/shared/WAButton'
-import { Award, Users, Shield, UserCheck, MapPin, Building2, Briefcase } from 'lucide-react'
+import { SOTKDiagram } from '@/components/shared/SOTKDiagram'
+import { Users } from 'lucide-react'
 
 export const revalidate = 60
 
@@ -24,6 +25,7 @@ export default async function PerangkatDesaPage() {
         aktif: { equals: true },
       },
       sort: 'urutan',
+      limit: 100, // Memastikan seluruh 13 perangkat desa terambil tanpa batasan default 10
       depth: 1,
     })
     
@@ -35,7 +37,7 @@ export default async function PerangkatDesaPage() {
     console.error('Error fetching Perangkat Desa docs:', error)
   }
 
-  // Fallback data resmi sesuai SOTK fisik kantor desa jika DB belum terisi
+  // Fallback data resmi 13 SOTK Pemdes Gongseng
   const fallbackDevices: any[] = [
     { id: 1, nama: 'AHMAD SUPRIYADI', jabatan: 'Kepala Desa', urutan: 1 },
     { id: 2, nama: 'NUR CHABIB', jabatan: 'Ketua BPD', urutan: 2 },
@@ -53,18 +55,6 @@ export default async function PerangkatDesaPage() {
   ]
 
   const displayDevices = hasDevices ? devices : fallbackDevices
-
-  // Helper pencari perangkat berdasarkan jabatan / urutan
-  const findStaff = (titleSnippet: string) => 
-    displayDevices.find(d => d.jabatan.toLowerCase().includes(titleSnippet.toLowerCase()))
-
-  const kades = findStaff('Kepala Desa') || displayDevices[0]
-  const bpd = findStaff('BPD') || displayDevices[1]
-  const sekdes = findStaff('Sekretaris') || displayDevices[2]
-
-  const kaurList = displayDevices.filter(d => d.jabatan.toLowerCase().includes('kaur'))
-  const kasiList = displayDevices.filter(d => d.jabatan.toLowerCase().includes('kasi'))
-  const kasunList = displayDevices.filter(d => d.jabatan.toLowerCase().includes('kasun') || d.jabatan.toLowerCase().includes('dusun'))
 
   return (
     <div className="flex flex-col min-h-screen bg-gray-50/50">
@@ -87,130 +77,19 @@ export default async function PerangkatDesaPage() {
       {/* Main Container */}
       <main className="max-w-7xl mx-auto px-6 py-16 space-y-20">
 
-        {/* 1. SEKSI DIAGRAM VISUAL SOTK */}
-        <section className="bg-white p-6 sm:p-10 rounded-3xl border border-gray-200/80 shadow-sm space-y-8">
-          <div className="text-center max-w-2xl mx-auto space-y-2">
-            <span className="text-xs font-extrabold text-emerald-700 uppercase tracking-widest block">
-              Bagan Resmi SOTK Pemdes Gongseng
-            </span>
-            <h2 className="text-2xl sm:text-3xl font-black text-gray-900 tracking-tight">
-              Struktur Organisasi & Tata Kerja
-            </h2>
-            <p className="text-xs sm:text-sm text-gray-500">
-              Sesuai dengan peta tata kerja Pemerintah Desa Gongseng, Kec. Megaluh - Kab. Jombang.
-            </p>
-          </div>
-
-          {/* Bagan Organisasi (Tree Flowchart) */}
-          <div className="overflow-x-auto pb-6">
-            <div className="min-w-[760px] flex flex-col items-center space-y-8">
-              
-              {/* Level 1: Kepala Desa & BPD */}
-              <div className="flex items-center justify-center gap-12 w-full relative">
-                {/* BPD Box (Kiri) */}
-                <div className="w-56 bg-amber-50/80 border-2 border-amber-300 p-4 rounded-2xl text-center shadow-sm relative">
-                  <div className="text-[10px] font-extrabold uppercase text-amber-800 tracking-wider mb-1">
-                    Badan Permusyawaratan Desa (BPD)
-                  </div>
-                  <div className="text-base font-black text-gray-900">{bpd?.nama || 'NUR CHABIB'}</div>
-                </div>
-
-                {/* Garis Koordinasi Horizontal (Putus-putus) */}
-                <div className="w-16 border-t-2 border-dashed border-gray-400 flex items-center justify-center">
-                  <span className="text-[9px] bg-gray-100 text-gray-600 px-1.5 py-0.5 rounded font-bold">Mitra</span>
-                </div>
-
-                {/* Kepala Desa Box (Utama / Top) */}
-                <div className="w-64 bg-emerald-700 text-white border-2 border-emerald-800 p-4 rounded-2xl text-center shadow-lg relative">
-                  <div className="inline-block px-2.5 py-0.5 rounded-full text-[9px] font-bold uppercase bg-amber-400 text-gray-950 mb-1">
-                    Kepala Desa
-                  </div>
-                  <div className="text-lg font-black tracking-tight">{kades?.nama || 'AHMAD SUPRIYADI'}</div>
-                </div>
-              </div>
-
-              {/* Garis Vertikal dari Kades ke Sekdes */}
-              <div className="w-0.5 h-8 bg-emerald-600" />
-
-              {/* Level 2: Sekretaris Desa */}
-              <div className="w-64 bg-emerald-50 border-2 border-emerald-400 p-4 rounded-2xl text-center shadow-sm relative">
-                <div className="text-[10px] font-extrabold uppercase text-emerald-800 tracking-wider mb-1">
-                  Sekretaris Desa
-                </div>
-                <div className="text-base font-black text-gray-900">{sekdes?.nama || 'SURYADI'}</div>
-              </div>
-
-              {/* Garis Pembagi Cabang Kaur & Kasi */}
-              <div className="w-full max-w-2xl border-t-2 border-emerald-500 relative flex justify-around">
-                {/* Cabang Kiri: Kaur */}
-                <div className="w-0.5 h-6 bg-emerald-500" />
-                {/* Cabang Kanan: Kasi */}
-                <div className="w-0.5 h-6 bg-emerald-500" />
-              </div>
-
-              {/* Level 3: Dual Grid (Kaur di Sekretariat & Kasi di Pelaksana Teknis) */}
-              <div className="grid grid-cols-2 gap-8 w-full max-w-4xl">
-                {/* Kolom Kiri: Kaur (Kepala Urusan) */}
-                <div className="bg-blue-50/50 p-4 rounded-2xl border border-blue-200/60 space-y-3">
-                  <div className="text-center text-xs font-extrabold text-blue-800 uppercase tracking-wider pb-1 border-b border-blue-200">
-                    Sekretariat (Kepala Urusan)
-                  </div>
-                  <div className="space-y-2">
-                    {kaurList.map((kaur, idx) => (
-                      <div key={idx} className="bg-white p-3 rounded-xl border border-blue-100 shadow-xs flex flex-col justify-center">
-                        <span className="text-[10px] font-bold text-blue-600 uppercase">{kaur.jabatan}</span>
-                        <span className="text-sm font-extrabold text-gray-900">{kaur.nama}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Kolom Kanan: Kasi (Kepala Seksi) */}
-                <div className="bg-purple-50/50 p-4 rounded-2xl border border-purple-200/60 space-y-3">
-                  <div className="text-center text-xs font-extrabold text-purple-800 uppercase tracking-wider pb-1 border-b border-purple-200">
-                    Pelaksana Teknis (Kepala Seksi)
-                  </div>
-                  <div className="space-y-2">
-                    {kasiList.map((kasi, idx) => (
-                      <div key={idx} className="bg-white p-3 rounded-xl border border-purple-100 shadow-xs flex flex-col justify-center">
-                        <span className="text-[10px] font-bold text-purple-600 uppercase">{kasi.jabatan}</span>
-                        <span className="text-sm font-extrabold text-gray-900">{kasi.nama}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              {/* Garis Penghubung ke Kasun */}
-              <div className="w-0.5 h-8 bg-emerald-500" />
-
-              {/* Level 4: Kepala Dusun (Unsur Kewilayahan) */}
-              <div className="w-full max-w-4xl bg-emerald-50/60 p-4 rounded-2xl border border-emerald-200/80 space-y-3">
-                <div className="text-center text-xs font-extrabold text-emerald-800 uppercase tracking-wider pb-1 border-b border-emerald-200">
-                  Pelaksana Kewilayahan (Kepala Dusun)
-                </div>
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                  {kasunList.map((kasun, idx) => (
-                    <div key={idx} className="bg-white p-3 rounded-xl border border-emerald-100 text-center shadow-xs">
-                      <span className="text-[10px] font-bold text-emerald-700 block uppercase">{kasun.jabatan}</span>
-                      <span className="text-xs font-extrabold text-gray-900">{kasun.nama}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-            </div>
-          </div>
+        {/* 1. SEKSI DIAGRAM VISUAL SOTK 1:1 */}
+        <section className="space-y-4">
+          <SOTKDiagram devices={displayDevices} />
         </section>
 
-        {/* 2. DAFTAR KARTU DETAIL PERANGKAT DESA */}
+        {/* 2. DAFTAR KARTU DETAIL PERANGKAT DESA (LENGKAP 13 HINGGA SEMUA KASUN) */}
         <section className="space-y-12">
           <div className="text-center max-w-md mx-auto">
             <div className="w-10 h-10 rounded-xl bg-emerald-100 flex items-center justify-center text-emerald-700 mx-auto mb-2 border border-emerald-200">
               <Users className="w-5 h-5" />
             </div>
             <h2 className="text-2xl font-extrabold text-gray-900 tracking-tight">Daftar Perangkat Desa</h2>
-            <p className="text-xs text-gray-500 mt-1">Profil lengkap jajaran aparatur Desa Gongseng</p>
+            <p className="text-xs text-gray-500 mt-1">Profil lengkap 13 jajaran aparatur Desa Gongseng</p>
             <div className="w-12 h-1 bg-emerald-600 mx-auto mt-3 rounded" />
           </div>
 
