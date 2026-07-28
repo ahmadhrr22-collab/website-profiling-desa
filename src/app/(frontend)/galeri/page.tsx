@@ -1,6 +1,8 @@
 import React from 'react'
 import { getPayload } from '@/lib/payload'
 import { GaleriInteractiveGrid } from '@/components/shared/GaleriInteractiveGrid'
+import { PageHero } from '@/components/shared/PageHero'
+import { Image as ImageIcon } from 'lucide-react'
 import { Galeri } from '@/payload-types'
 
 export const revalidate = 60
@@ -105,20 +107,12 @@ export default async function GaleriPage() {
   return (
     <div className="flex flex-col min-h-screen bg-gray-50/50">
       {/* Hero Header Banner */}
-      <section className="relative bg-emerald-900 py-20 text-center text-white overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(16,185,129,0.1),transparent_70%)]" />
-        <div className="relative max-w-4xl mx-auto px-6">
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold text-emerald-300 bg-emerald-950/80 border border-emerald-800/60 mb-4 uppercase tracking-wider">
-            Dokumentasi Visual
-          </span>
-          <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">
-            Galeri Kegiatan Desa
-          </h1>
-          <p className="text-emerald-100/90 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
-            Kumpulan potret pembangunan infrastruktur, kegiatan kemasyarakatan, kebudayaan lokal, serta pesona alam pertanian Desa Gongseng.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        badge="Dokumentasi Visual"
+        title="Galeri Kegiatan Desa"
+        description="Kumpulan potret pembangunan infrastruktur, kegiatan kemasyarakatan, kebudayaan lokal, serta pesona alam pertanian Desa Gongseng."
+        icon={ImageIcon}
+      />
 
       {/* Main Content (Interactive Filters and Lightbox) */}
       <main className="max-w-7xl mx-auto px-6 py-16">

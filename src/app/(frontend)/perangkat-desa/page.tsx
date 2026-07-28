@@ -4,7 +4,8 @@ import { getPayload } from '@/lib/payload'
 import { PerangkatDesa } from '@/payload-types'
 import { WAButton } from '@/components/shared/WAButton'
 import { SOTKDiagram } from '@/components/shared/SOTKDiagram'
-import { Users } from 'lucide-react'
+import { PageHero } from '@/components/shared/PageHero'
+import { Award, Users } from 'lucide-react'
 
 export const revalidate = 60
 
@@ -75,20 +76,12 @@ export default async function PerangkatDesaPage() {
   return (
     <div className="flex flex-col min-h-screen bg-gray-50/50">
       {/* Hero Header Banner */}
-      <section className="relative bg-emerald-900 py-20 text-center text-white overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(16,185,129,0.15),transparent_70%)]" />
-        <div className="relative max-w-4xl mx-auto px-6">
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold text-emerald-300 bg-emerald-950/80 border border-emerald-800/60 mb-4 uppercase tracking-wider">
-            Struktur Pemerintahan Desa
-          </span>
-          <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">
-            Aparatur & Perangkat Desa
-          </h1>
-          <p className="text-emerald-100/90 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
-            Susunan Organisasi dan Tata Kerja (SOTK) Pemerintah Desa Gongseng, Kec. Megaluh, Kab. Jombang.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        badge="Struktur Pemerintahan Desa"
+        title="Aparatur & Perangkat Desa"
+        description="Susunan Organisasi dan Tata Kerja (SOTK) Pemerintah Desa Gongseng, Kec. Megaluh, Kab. Jombang."
+        icon={Award}
+      />
 
       {/* Main Container */}
       <main className="max-w-7xl mx-auto px-6 py-16 space-y-20">

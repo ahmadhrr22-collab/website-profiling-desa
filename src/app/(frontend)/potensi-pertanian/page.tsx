@@ -1,4 +1,4 @@
-import React from 'react'
+import { PageHero } from '@/components/shared/PageHero'
 import { Metadata } from 'next'
 import { Sprout, Sun, Calendar, Users, MapPin, Droplets, Tractor, ShieldCheck, CheckCircle2 } from 'lucide-react'
 
@@ -91,21 +91,12 @@ export default function PotensiPertanianPage() {
     <div className="flex flex-col min-h-screen bg-gray-50/50">
       
       {/* 1. Hero Header Banner */}
-      <section className="relative bg-emerald-950 py-24 text-white overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(16,185,129,0.2),transparent_70%)]" />
-        <div className="relative max-w-5xl mx-auto px-6 text-center space-y-4">
-          <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-bold text-amber-300 bg-emerald-900/80 border border-emerald-700/60 uppercase tracking-widest">
-            <Sprout className="w-4 h-4" />
-            Sektor Unggulan Agraris
-          </span>
-          <h1 className="text-4xl sm:text-5xl font-black tracking-tight leading-tight">
-            Potensi Pertanian & Lahan Sawah Desa Gongseng
-          </h1>
-          <p className="text-emerald-100/90 text-sm sm:text-base max-w-3xl mx-auto leading-relaxed">
-            Menyelami kekayaan alam Desa Gongseng, Kecamatan Megaluh. Hamparan sawah seluas 170 Hektar yang subur dengan produktivitas panen padi mencapai 8 Ton per Hektar.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        badge="Sektor Unggulan Agraris"
+        title="Potensi Pertanian & Lahan Sawah Desa Gongseng"
+        description="Menyelami kekayaan alam Desa Gongseng, Kecamatan Megaluh. Hamparan sawah seluas 170 Hektar yang subur dengan produktivitas panen padi mencapai 8 Ton per Hektar."
+        icon={Sprout}
+      />
 
       {/* 2. Main Body Container */}
       <main className="max-w-7xl mx-auto px-6 py-16 space-y-20">

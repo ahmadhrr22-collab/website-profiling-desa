@@ -1,6 +1,8 @@
 import React from 'react'
 import { getPayload } from '@/lib/payload'
 import { LayananInformasiTabs } from '@/components/shared/LayananInformasiTabs'
+import { PageHero } from '@/components/shared/PageHero'
+import { FileText } from 'lucide-react'
 import { Kegiatan, Pengumuman } from '@/payload-types'
 
 export const revalidate = 60
@@ -176,20 +178,12 @@ export default async function LayananInformasiPage() {
   return (
     <div className="flex flex-col min-h-screen bg-gray-50/50">
       {/* Hero Header Banner */}
-      <section className="relative bg-emerald-900 py-20 text-center text-white overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(16,185,129,0.1),transparent_70%)]" />
-        <div className="relative max-w-4xl mx-auto px-6">
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold text-emerald-300 bg-emerald-950/80 border border-emerald-800/60 mb-4 uppercase tracking-wider">
-            Portal Informasi Publik
-          </span>
-          <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">
-            Layanan & Informasi Desa
-          </h1>
-          <p className="text-emerald-100/90 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
-            Ikuti berbagai pengumuman resmi pemerintah desa serta jadwal agenda kegiatan kemasyarakatan terbaru di wilayah Desa Gongseng.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        badge="Portal Informasi Publik"
+        title="Layanan & Informasi Desa"
+        description="Ikuti berbagai pengumuman resmi pemerintah desa serta jadwal agenda kegiatan kemasyarakatan terbaru di wilayah Desa Gongseng."
+        icon={FileText}
+      />
 
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-6 py-16">
