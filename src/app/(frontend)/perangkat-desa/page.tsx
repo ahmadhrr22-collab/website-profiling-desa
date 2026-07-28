@@ -37,21 +37,37 @@ export default async function PerangkatDesaPage() {
     console.error('Error fetching Perangkat Desa docs:', error)
   }
 
+  // Map foto avatar perangkat desa dari hasil ekstraksi ID Card
+  const photoMap: Record<string, string> = {
+    'AHMAD SUPRIYADI': '/images/perangkat/ahmad_supriyadi.jpg',
+    'SURYADI': '/images/perangkat/suryadi.jpg',
+    'SUWANAH': '/images/perangkat/suwanah.jpg',
+    'MAYA PURNAMA S.': '/images/perangkat/maya_p.jpg',
+    'TSANI ABIL HASAN A.S.': '/images/perangkat/pak_diky.jpg',
+    'FOFON W.DS.': '/images/perangkat/fofon_wahyu.jpg',
+    'TAUFIK L.': '/images/perangkat/taufik_lubis.jpg',
+    'ILHAM P.': '/images/perangkat/ilham_p.jpg',
+    'CANDRA W.': '/images/perangkat/candra_w.jpg',
+    'SRI SUGIANTI': '/images/perangkat/sri_sugianti.jpg',
+    'SYAMSUDIN Z.': '/images/perangkat/syamsudin_z.jpg',
+    'ANAS MAULANA': '/images/perangkat/anas_m.jpg',
+  }
+
   // Fallback data resmi 13 SOTK Pemdes Gongseng
   const fallbackDevices: any[] = [
-    { id: 1, nama: 'AHMAD SUPRIYADI', jabatan: 'Kepala Desa', urutan: 1 },
+    { id: 1, nama: 'AHMAD SUPRIYADI', jabatan: 'Kepala Desa', urutan: 1, foto: '/images/perangkat/ahmad_supriyadi.jpg' },
     { id: 2, nama: 'NUR CHABIB', jabatan: 'Ketua BPD', urutan: 2 },
-    { id: 3, nama: 'SURYADI', jabatan: 'Sekretaris Desa', urutan: 3 },
-    { id: 4, nama: 'SUWANAH', jabatan: 'Kaur Tata Usaha & Umum', urutan: 4 },
-    { id: 5, nama: 'MAYA PURNAMA S.', jabatan: 'Kaur Keuangan', urutan: 5 },
-    { id: 6, nama: 'TSANI ABIL HASAN A.S.', jabatan: 'Kaur Perencanaan', urutan: 6 },
-    { id: 7, nama: 'FOFON W.DS.', jabatan: 'Kasi Pemerintahan', urutan: 7 },
-    { id: 8, nama: 'TAUFIK L.', jabatan: 'Kasi Kesejahteraan', urutan: 8 },
-    { id: 9, nama: 'ILHAM P.', jabatan: 'Kasi Pelayanan', urutan: 9 },
-    { id: 10, nama: 'CANDRA W.', jabatan: 'Kasun Gongseng 1', urutan: 10 },
-    { id: 11, nama: 'SRI SUGIANTI', jabatan: 'Kasun Gongseng 2', urutan: 11 },
-    { id: 12, nama: 'SYAMSUDIN Z.', jabatan: 'Kasun Krandekan', urutan: 12 },
-    { id: 13, nama: 'ANAS MAULANA', jabatan: 'Kasun Garurejo', urutan: 13 },
+    { id: 3, nama: 'SURYADI', jabatan: 'Sekretaris Desa', urutan: 3, foto: '/images/perangkat/suryadi.jpg' },
+    { id: 4, nama: 'SUWANAH', jabatan: 'Kaur Tata Usaha & Umum', urutan: 4, foto: '/images/perangkat/suwanah.jpg' },
+    { id: 5, nama: 'MAYA PURNAMA S.', jabatan: 'Kaur Keuangan', urutan: 5, foto: '/images/perangkat/maya_p.jpg' },
+    { id: 6, nama: 'TSANI ABIL HASAN A.S.', jabatan: 'Kaur Perencanaan', urutan: 6, foto: '/images/perangkat/pak_diky.jpg' },
+    { id: 7, nama: 'FOFON W.DS.', jabatan: 'Kasi Pemerintahan', urutan: 7, foto: '/images/perangkat/fofon_wahyu.jpg' },
+    { id: 8, nama: 'TAUFIK L.', jabatan: 'Kasi Kesejahteraan', urutan: 8, foto: '/images/perangkat/taufik_lubis.jpg' },
+    { id: 9, nama: 'ILHAM P.', jabatan: 'Kasi Pelayanan', urutan: 9, foto: '/images/perangkat/ilham_p.jpg' },
+    { id: 10, nama: 'CANDRA W.', jabatan: 'Kasun Gongseng 1', urutan: 10, foto: '/images/perangkat/candra_w.jpg' },
+    { id: 11, nama: 'SRI SUGIANTI', jabatan: 'Kasun Gongseng 2', urutan: 11, foto: '/images/perangkat/sri_sugianti.jpg' },
+    { id: 12, nama: 'SYAMSUDIN Z.', jabatan: 'Kasun Krandekan', urutan: 12, foto: '/images/perangkat/syamsudin_z.jpg' },
+    { id: 13, nama: 'ANAS MAULANA', jabatan: 'Kasun Garurejo', urutan: 13, foto: '/images/perangkat/anas_m.jpg' },
   ]
 
   const displayDevices = hasDevices ? devices : fallbackDevices
@@ -95,8 +111,10 @@ export default async function PerangkatDesaPage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {displayDevices.map((device) => {
-              const hasPhoto = device.foto && typeof device.foto === 'object' && 'url' in device.foto && device.foto.url
-              const photoUrl = hasPhoto ? device.foto.url : null
+              const hasPayloadPhoto = device.foto && typeof device.foto === 'object' && 'url' in device.foto && device.foto.url
+              const photoUrl = hasPayloadPhoto 
+                ? device.foto.url 
+                : (typeof device.foto === 'string' ? device.foto : (photoMap[device.nama] || null))
               const isPimpinan = device.urutan === 1 || device.urutan === 2
 
               return (
