@@ -15,7 +15,7 @@ interface NavLink {
 const navLinks: NavLink[] = [
   { label: 'Beranda', href: '/' },
   { label: 'Profil Desa', href: '/profil-desa' },
-  { label: 'UMKM & Wisata', href: '/umkm-wisata' },
+  { label: 'Potensi & Pertanian', href: '/potensi-pertanian' },
   { label: 'Galeri', href: '/galeri' },
   { label: 'Perangkat Desa', href: '/perangkat-desa' },
   { label: 'Layanan & Informasi', href: '/layanan-informasi' },

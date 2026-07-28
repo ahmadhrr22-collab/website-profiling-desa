@@ -73,7 +73,7 @@ export async function Footer() {
             </div>
             <p className="text-sm text-light/80 leading-relaxed max-w-sm">
               Website resmi Desa Gongseng, Kec. Megaluh, Kab. Jombang, Jawa Timur. 
-              Pusat informasi layanan administrasi, potensi wisata, dan produk unggulan UMKM lokal.
+              Pusat informasi layanan administrasi, tata kelola pemerintahan, dan potensi pertanian desa.
             </p>
             <p className="text-xs text-light/50 font-medium">
               Program KKN-T Mahasiswa Institut Pertanian Bogor 2026.
@@ -92,8 +92,8 @@ export async function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/umkm-wisata" className="hover:text-accent transition-colors">
-                  UMKM & Destinasi Wisata
+                <Link href="/potensi-pertanian" className="hover:text-accent transition-colors">
+                  Potensi & Pertanian Desa
                 </Link>
               </li>
               <li>

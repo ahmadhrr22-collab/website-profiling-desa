@@ -4,9 +4,9 @@ import { HeroSection } from '@/components/sections/HeroSection'
 import { StatistikSection } from '@/components/sections/StatistikSection'
 import { SambutanSection } from '@/components/sections/SambutanSection'
 import { PengumumanSection } from '@/components/sections/PengumumanSection'
-import { UMKMFeaturedSection } from '@/components/sections/UMKMFeaturedSection'
+import { PertanianFeaturedSection } from '@/components/sections/PertanianFeaturedSection'
 import Link from 'next/link'
-import { BookOpen, Award, FileText, ShoppingBag, Image as ImageIcon, Settings, ArrowRight } from 'lucide-react'
+import { BookOpen, Award, FileText, Sprout, Image as ImageIcon, Settings, ArrowRight } from 'lucide-react'
 
 // Menandakan page ini selalu dinamis agar fetch data terupdate dari database
 export const revalidate = 60
@@ -17,13 +17,12 @@ export default async function HomePage() {
   let sambutanData = null
   let demografiData = null
   let pengumumanDocs: any[] = []
-  let umkmDocs: any[] = []
 
   try {
     payload = await getPayload()
 
     // Ambil data Global & Collection secara paralel untuk performa optimal
-    const [heroRes, sambutanRes, demografiRes, pengumumanRes, umkmRes] = await Promise.allSettled([
+    const [heroRes, sambutanRes, demografiRes, pengumumanRes] = await Promise.allSettled([
       payload.findGlobal({
         slug: 'hero-beranda',
         depth: 1,
@@ -42,22 +41,12 @@ export default async function HomePage() {
         limit: 3,
         depth: 1,
       }),
-      payload.find({
-        collection: 'umkm',
-        where: {
-          featured: { equals: true },
-          aktif: { equals: true },
-        },
-        limit: 3,
-        depth: 1,
-      }),
     ])
 
     if (heroRes.status === 'fulfilled') heroData = heroRes.value
     if (sambutanRes.status === 'fulfilled') sambutanData = sambutanRes.value
     if (demografiRes.status === 'fulfilled') demografiData = demografiRes.value
     if (pengumumanRes.status === 'fulfilled') pengumumanDocs = pengumumanRes.value.docs
-    if (umkmRes.status === 'fulfilled') umkmDocs = umkmRes.value.docs
 
   } catch (error) {
     console.error('Error fetching data from Payload CMS:', error)
@@ -87,11 +76,11 @@ export default async function HomePage() {
       color: 'text-amber-600 bg-amber-50 border-amber-100',
     },
     {
-      title: 'UMKM & Wisata',
-      desc: 'Dukung produk lokal unggulan warga dan jelajahi potensi wisata desa.',
-      href: '/umkm-wisata',
-      icon: ShoppingBag,
-      color: 'text-purple-600 bg-purple-50 border-purple-100',
+      title: 'Potensi & Pertanian',
+      desc: 'Jelajahi potensi 170 Ha sawah, komoditas unggulan padi & palawija, serta kelompok tani.',
+      href: '/potensi-pertanian',
+      icon: Sprout,
+      color: 'text-emerald-600 bg-emerald-50 border-emerald-100',
     },
     {
       title: 'Galeri Kegiatan',
@@ -123,8 +112,8 @@ export default async function HomePage() {
       {/* 4. Pengumuman & Berita Terbaru */}
       <PengumumanSection items={pengumumanDocs} />
 
-      {/* 5. UMKM Unggulan */}
-      <UMKMFeaturedSection items={umkmDocs} />
+      {/* 5. Potensi Pertanian Unggulan */}
+      <PertanianFeaturedSection />
 
       {/* 6. Akses Cepat / Pintasan Layanan */}
       <section className="py-20 bg-white border-t border-gray-100">
