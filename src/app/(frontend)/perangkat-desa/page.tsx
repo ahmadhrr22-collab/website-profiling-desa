@@ -138,7 +138,7 @@ export default async function PerangkatDesaPage() {
                         src={photoUrl}
                         alt={device.nama}
                         fill
-                        className="object-cover"
+                        className="object-cover object-top"
                         sizes="112px"
                       />
                     ) : (
