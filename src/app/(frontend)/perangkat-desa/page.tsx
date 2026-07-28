@@ -98,24 +98,26 @@ export default async function PerangkatDesaPage() {
           <SOTKDiagram devices={displayDevices} />
         </section>
 
-        {/* 2. DAFTAR KARTU DETAIL PERANGKAT DESA (LENGKAP 13 HINGGA SEMUA KASUN) */}
+        {/* 2. DAFTAR KARTU DETAIL PERANGKAT DESA (PELAKSANA PEMERINTAH DESA) */}
         <section className="space-y-12">
           <div className="text-center max-w-md mx-auto">
             <div className="w-10 h-10 rounded-xl bg-emerald-100 flex items-center justify-center text-emerald-700 mx-auto mb-2 border border-emerald-200">
               <Users className="w-5 h-5" />
             </div>
             <h2 className="text-2xl font-extrabold text-gray-900 tracking-tight">Daftar Perangkat Desa</h2>
-            <p className="text-xs text-gray-500 mt-1">Profil lengkap 13 jajaran aparatur Desa Gongseng</p>
+            <p className="text-xs text-gray-500 mt-1">Profil jajaran aparatur Pemerintah Desa Gongseng</p>
             <div className="w-12 h-1 bg-emerald-600 mx-auto mt-3 rounded" />
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {displayDevices.map((device) => {
-              const hasPayloadPhoto = device.foto && typeof device.foto === 'object' && 'url' in device.foto && device.foto.url
-              const photoUrl = hasPayloadPhoto 
-                ? device.foto.url 
-                : (typeof device.foto === 'string' ? device.foto : (photoMap[device.nama] || null))
-              const isPimpinan = device.urutan === 1 || device.urutan === 2
+            {displayDevices
+              .filter((device) => !device.jabatan.toLowerCase().includes('bpd'))
+              .map((device) => {
+                const hasPayloadPhoto = device.foto && typeof device.foto === 'object' && 'url' in device.foto && device.foto.url
+                const photoUrl = hasPayloadPhoto 
+                  ? device.foto.url 
+                  : (typeof device.foto === 'string' ? device.foto : (photoMap[device.nama] || null))
+                const isPimpinan = device.urutan === 1
 
               return (
                 <div
