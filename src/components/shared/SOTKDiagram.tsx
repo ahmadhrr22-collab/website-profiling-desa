@@ -27,7 +27,7 @@ export function SOTKDiagram({ devices }: SOTKDiagramProps) {
   }
 
   const kades = getStaff('Kepala Desa', 'AHMAD SUPRIYADI', 'KEPALA DESA')
-  const bpd = getStaff('BPD', 'NUR CHABIB', 'BADAN PERMUSYAWARATAN DESA (BPD)')
+  const bpd = getStaff('BPD', 'NUR CHABIB', 'BADAN PERMUSYAWARATAN DESA ( BPD )')
   const sekdes = getStaff('Sekretaris', 'SURYADI', 'SEKRETARIS DESA')
 
   // Kasi (Pelaksana Teknis)
@@ -47,7 +47,7 @@ export function SOTKDiagram({ devices }: SOTKDiagramProps) {
   const kasun4 = getStaff('Garurejo', 'ANAS MAULANA', 'KEPALA DUSUN GARUREJO')
 
   return (
-    <div className="bg-white rounded-3xl border border-gray-300 shadow-lg overflow-hidden">
+    <div className="bg-white rounded-3xl border border-gray-300 shadow-xl overflow-hidden">
       {/* Switcher Header Mode Diagram vs Foto Papan Asli */}
       <div className="p-4 sm:p-6 bg-gradient-to-r from-gray-950 via-emerald-950 to-gray-950 text-white flex flex-col sm:flex-row items-center justify-between gap-4 border-b border-gray-800">
         <div>
@@ -69,7 +69,7 @@ export function SOTKDiagram({ devices }: SOTKDiagramProps) {
             }`}
           >
             <Layers className="w-3.5 h-3.5" />
-            <span>Bagan Digital (1:1)</span>
+            <span>Bagan Digital (1:1 Vektor)</span>
           </button>
           <button
             onClick={() => setViewMode('photo')}
@@ -103,255 +103,208 @@ export function SOTKDiagram({ devices }: SOTKDiagramProps) {
           </p>
         </div>
       ) : (
-        /* Mode 2: Bagan Flowchart Digital SOTK Presisi 1:1 Dengan Garis Menyatu Perfect */
-        <div className="p-4 sm:p-8 bg-amber-50/20 overflow-x-auto">
-          <div className="min-w-[960px] max-w-5xl mx-auto p-6 bg-white border-4 border-amber-600/90 rounded-2xl shadow-xl space-y-0 text-gray-950 font-sans relative">
+        /* Mode 2: Bagan Flowchart Vektor SOTK Presisi 1:1 Dengan Garis SVG Nyatu Perfect Tanpa Celah */
+        <div className="p-4 sm:p-8 bg-amber-50/15 overflow-x-auto">
+          <div className="relative w-[1000px] h-[660px] mx-auto bg-white border-4 border-amber-500/90 rounded-2xl shadow-xl p-5 select-none font-sans">
             
-            {/* 1. BANNER HEADER BOARD (Kuning Emas SOTK) */}
-            <div className="bg-gradient-to-r from-amber-400 via-amber-300 to-amber-400 border-2 border-black p-3 rounded-lg text-center shadow-xs mb-8">
-              <h2 className="text-xl font-black text-black uppercase tracking-tight leading-tight">
+            {/* SVG OVERLAY CANVAS UNTUK GARIS-GARIS SEAMLESS TANPA PAHA / CELAH */}
+            <svg 
+              className="absolute inset-0 w-full h-full pointer-events-none z-10" 
+              viewBox="0 0 1000 660" 
+              fill="none" 
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              {/* 1. Garis Horisontal Koordinasi BPD ke Kades (Dashed) */}
+              <line x1="280" y1="102" x2="850" y2="102" stroke="#111827" strokeWidth="2" strokeDasharray="6 4" />
+
+              {/* 2. Garis Vertikal dari Kades Turun ke T-Bar 1 */}
+              <line x1="850" y1="135" x2="850" y2="165" stroke="#111827" strokeWidth="2.5" />
+
+              {/* 3. T-Bar Horisontal Utama (Dari Kasi Center 237.5 s/d Kades 850) */}
+              <line x1="237.5" y1="165" x2="850" y2="165" stroke="#111827" strokeWidth="2.5" />
+
+              {/* 4. Drop Line ke Kasi Group T-Bar */}
+              <line x1="237.5" y1="165" x2="237.5" y2="185" stroke="#111827" strokeWidth="2.5" />
+              {/* Kasi T-Bar Horisontal (Dari Kasi 1 87.5 s/d Kasi 3 387.5) */}
+              <line x1="87.5" y1="185" x2="387.5" y2="185" stroke="#111827" strokeWidth="2.5" />
+              {/* Drop Lines ke Kasi 1, 2, 3 */}
+              <line x1="87.5" y1="185" x2="87.5" y2="210" stroke="#111827" strokeWidth="2.5" />
+              <line x1="237.5" y1="185" x2="237.5" y2="210" stroke="#111827" strokeWidth="2.5" />
+              <line x1="387.5" y1="185" x2="387.5" y2="210" stroke="#111827" strokeWidth="2.5" />
+
+              {/* 5. Drop Line ke Sekdes Top Center (X = 740) */}
+              <line x1="740" y1="165" x2="740" y2="210" stroke="#111827" strokeWidth="2.5" />
+
+              {/* 6. Line dari Sekdes Bottom (Y = 275) ke Kaur T-Bar (Y = 305) */}
+              <line x1="740" y1="275" x2="740" y2="305" stroke="#111827" strokeWidth="2.5" />
+              {/* Kaur T-Bar Horisontal (Dari Kaur 1 580 s/d Kaur 3 890) */}
+              <line x1="580" y1="305" x2="890" y2="305" stroke="#111827" strokeWidth="2.5" />
+              {/* Drop Lines ke Kaur 1, 2, 3 */}
+              <line x1="580" y1="305" x2="580" y2="330" stroke="#111827" strokeWidth="2.5" />
+              <line x1="735" y1="305" x2="735" y2="330" stroke="#111827" strokeWidth="2.5" />
+              <line x1="890" y1="305" x2="890" y2="330" stroke="#111827" strokeWidth="2.5" />
+
+              {/* 7. Trunk Vertikal Utama ke Kasun (X = 480, dari Y = 165 s/d Y = 455) */}
+              <line x1="480" y1="165" x2="480" y2="455" stroke="#111827" strokeWidth="2.5" />
+              {/* Kasun T-Bar Horisontal (Dari Kasun 1 132.5 s/d Kasun 4 867.5) */}
+              <line x1="132.5" y1="455" x2="867.5" y2="455" stroke="#111827" strokeWidth="2.5" />
+              {/* Drop Lines ke Kasun 1, 2, 3, 4 */}
+              <line x1="132.5" y1="455" x2="132.5" y2="480" stroke="#111827" strokeWidth="2.5" />
+              <line x1="377.5" y1="455" x2="377.5" y2="480" stroke="#111827" strokeWidth="2.5" />
+              <line x1="622.5" y1="455" x2="622.5" y2="480" stroke="#111827" strokeWidth="2.5" />
+              <line x1="867.5" y1="455" x2="867.5" y2="480" stroke="#111827" strokeWidth="2.5" />
+            </svg>
+
+            {/* HEADER BANNER SOTK */}
+            <div className="absolute left-[20px] top-[18px] right-[20px] h-[42px] bg-gradient-to-r from-amber-400 via-amber-300 to-amber-400 border-2 border-black rounded shadow-xs flex flex-col items-center justify-center">
+              <h2 className="text-sm font-black text-black uppercase tracking-tight leading-tight">
                 SUSUNAN ORGANISASI TATA KERJA PEMERINTAH DESA GONGSENG
               </h2>
-              <p className="text-sm font-black text-black uppercase tracking-wider">
+              <p className="text-[10px] font-black text-black uppercase tracking-wider">
                 KECAMATAN MEGALUH - KABUPATEN JOMBANG
               </p>
             </div>
 
-            {/* 2. TINGKAT ATAS: BPD & KEPALA DESA */}
-            <div className="grid grid-cols-12 gap-0 items-center relative">
-              {/* BPD (Kiri - Col 1-4) */}
-              <div className="col-span-4 pr-0">
-                <div className="border-2 border-black bg-white rounded shadow-xs overflow-hidden max-w-[240px]">
-                  <div className="bg-yellow-300 text-black text-[10px] font-black uppercase text-center py-1 border-b border-black px-1">
-                    BADAN PERMUSYAWARATAN DESA ( BPD )
-                  </div>
-                  <div className="p-2 text-center text-sm font-black text-black uppercase">
-                    {bpd.nama}
-                  </div>
-                </div>
+            {/* ROW 1: BPD & KEPALA DESA */}
+            {/* BPD (Left 20px, Top 70px, Width 260px, Height 65px) */}
+            <div className="absolute left-[20px] top-[70px] w-[260px] h-[65px] border-2 border-black bg-white rounded overflow-hidden shadow-xs z-20 flex flex-col justify-between">
+              <div className="bg-yellow-300 text-black text-[9px] font-black uppercase text-center py-1 border-b border-black">
+                BADAN PERMUSYAWARATAN DESA ( BPD )
               </div>
-
-              {/* Garis Horizontal Koordinasi BPD <---> Kades */}
-              <div className="col-span-4 flex items-center relative">
-                <div className="w-full border-t-2 border-black" />
-              </div>
-
-              {/* KEPALA DESA (Kanan - Col 5-12) */}
-              <div className="col-span-4 pl-0 flex justify-end">
-                <div className="border-2 border-black bg-white rounded shadow-md overflow-hidden w-[240px] id-kades">
-                  <div className="bg-yellow-300 text-black text-[11px] font-black uppercase text-center py-1 border-b border-black">
-                    KEPALA DESA
-                  </div>
-                  <div className="p-2.5 text-center text-base font-black text-black uppercase">
-                    {kades.nama}
-                  </div>
-                </div>
+              <div className="py-2 text-center text-xs font-black text-black uppercase flex-grow flex items-center justify-center">
+                {bpd.nama}
               </div>
             </div>
 
-            {/* 3. GARIS VERTIKAL DARIPADA KEPALA DESA TURUN */}
-            <div className="relative h-10">
-              {/* Garis lurus persis di bawah tengah kotak Kades (Kanan / ~83% width) */}
-              <div className="absolute right-[120px] top-0 bottom-0 w-0.5 bg-black" />
-            </div>
-
-            {/* 4. GARIS T-BAR HORIZONTAL UTAMA MEMBAGI KE KASI (KIRI) DAN SEKDES (KANAN) */}
-            <div className="relative h-6">
-              {/* Garis Horizontal dari pusat Kasi (Kiri 25%) sampai Sekdes (Kanan 83%) */}
-              <div className="absolute left-[25%] right-[120px] top-0 h-0.5 bg-black" />
-              
-              {/* Turun ke Kasi (Kiri 25%) */}
-              <div className="absolute left-[25%] top-0 bottom-0 w-0.5 bg-black" />
-              
-              {/* Turun ke Sekdes (Kanan 83%) */}
-              <div className="absolute right-[120px] top-0 bottom-0 w-0.5 bg-black" />
-
-              {/* Turun ke Jalur Utama Kasun (Tengah 50%) */}
-              <div className="absolute left-[50%] top-0 bottom-0 w-0.5 bg-black" />
-            </div>
-
-            {/* 5. TINGKAT TENGAH: KASI (KIRI) & SEKRETARIS DESA / KAUR (KANAN) */}
-            <div className="grid grid-cols-12 gap-8 items-start relative pt-0">
-              
-              {/* SIDE KIRI: KASI (3 Seksi Bersampingan) */}
-              <div className="col-span-6 relative pt-0">
-                {/* Garis Horizontal Menyambung 3 Box Kasi */}
-                <div className="relative h-6">
-                  <div className="absolute left-[16.6%] right-[16.6%] top-0 h-0.5 bg-black" />
-                  {/* Drop Line Kasi 1 */}
-                  <div className="absolute left-[16.6%] top-0 bottom-0 w-0.5 bg-black" />
-                  {/* Drop Line Kasi 2 */}
-                  <div className="absolute left-[50%] top-0 bottom-0 w-0.5 bg-black" />
-                  {/* Drop Line Kasi 3 */}
-                  <div className="absolute right-[16.6%] top-0 bottom-0 w-0.5 bg-black" />
-                </div>
-
-                <div className="grid grid-cols-3 gap-2">
-                  {/* Kasi Pem */}
-                  <div className="border-2 border-black bg-white rounded overflow-hidden shadow-xs">
-                    <div className="bg-emerald-600 text-white text-[9px] font-black uppercase text-center py-1 border-b border-black px-0.5">
-                      KEPALA SEKSI PEMERINTAHAN
-                    </div>
-                    <div className="p-2 text-center text-xs font-black text-black uppercase">
-                      {kasiPem.nama}
-                    </div>
-                  </div>
-
-                  {/* Kasi Kesra */}
-                  <div className="border-2 border-black bg-white rounded overflow-hidden shadow-xs">
-                    <div className="bg-emerald-600 text-white text-[9px] font-black uppercase text-center py-1 border-b border-black px-0.5">
-                      KEPALA SEKSI KESEJAHTERAAN
-                    </div>
-                    <div className="p-2 text-center text-xs font-black text-black uppercase">
-                      {kasiKesra.nama}
-                    </div>
-                  </div>
-
-                  {/* Kasi Pelayanan */}
-                  <div className="border-2 border-black bg-white rounded overflow-hidden shadow-xs">
-                    <div className="bg-emerald-600 text-white text-[9px] font-black uppercase text-center py-1 border-b border-black px-0.5">
-                      KEPALA SEKSI PELAYANAN
-                    </div>
-                    <div className="p-2 text-center text-xs font-black text-black uppercase">
-                      {kasiPelayanan.nama}
-                    </div>
-                  </div>
-                </div>
+            {/* KEPALA DESA (Left 720px, Top 70px, Width 260px, Height 65px) */}
+            <div className="absolute left-[720px] top-[70px] w-[260px] h-[65px] border-2 border-black bg-white rounded overflow-hidden shadow-md z-20 flex flex-col justify-between">
+              <div className="bg-yellow-300 text-black text-[10px] font-black uppercase text-center py-1 border-b border-black">
+                KEPALA DESA
               </div>
-
-              {/* SIDE KANAN: SEKRETARIS DESA & KAUR */}
-              <div className="col-span-6 flex flex-col items-center relative pt-0">
-                {/* Box Sekretaris Desa */}
-                <div className="border-2 border-black bg-white rounded shadow-xs overflow-hidden w-[220px]">
-                  <div className="bg-amber-600 text-white text-[10px] font-black uppercase text-center py-1 border-b border-black">
-                    SEKRETARIS DESA
-                  </div>
-                  <div className="p-2 text-center text-sm font-black text-black uppercase">
-                    {sekdes.nama}
-                  </div>
-                </div>
-
-                {/* Garis Vertikal turun dari Sekdes ke T-Bar Kaur */}
-                <div className="w-0.5 h-6 bg-black" />
-
-                {/* Garis Horizontal Menyambung 3 Box Kaur */}
-                <div className="w-full relative h-6">
-                  <div className="absolute left-[16.6%] right-[16.6%] top-0 h-0.5 bg-black" />
-                  {/* Drop Line Kaur 1 */}
-                  <div className="absolute left-[16.6%] top-0 bottom-0 w-0.5 bg-black" />
-                  {/* Drop Line Kaur 2 */}
-                  <div className="absolute left-[50%] top-0 bottom-0 w-0.5 bg-black" />
-                  {/* Drop Line Kaur 3 */}
-                  <div className="absolute right-[16.6%] top-0 bottom-0 w-0.5 bg-black" />
-                </div>
-
-                {/* 3 Box Kaur (TU, Keuangan, Perencanaan) */}
-                <div className="grid grid-cols-3 gap-2 w-full">
-                  {/* Kaur TU */}
-                  <div className="border-2 border-black bg-white rounded overflow-hidden shadow-xs">
-                    <div className="bg-emerald-600 text-white text-[8px] sm:text-[9px] font-black uppercase text-center py-1 border-b border-black px-0.5">
-                      KEPALA URUSAN TATA USAHA DAN UMUM
-                    </div>
-                    <div className="p-1.5 text-center text-xs font-black text-black uppercase">
-                      {kaurUmum.nama}
-                    </div>
-                  </div>
-
-                  {/* Kaur Keuangan */}
-                  <div className="border-2 border-black bg-white rounded overflow-hidden shadow-xs">
-                    <div className="bg-emerald-600 text-white text-[8px] sm:text-[9px] font-black uppercase text-center py-1 border-b border-black px-0.5">
-                      KEPALA URUSAN KEUANGAN
-                    </div>
-                    <div className="p-1.5 text-center text-xs font-black text-black uppercase">
-                      {kaurKeuangan.nama}
-                    </div>
-                  </div>
-
-                  {/* Kaur Perencanaan */}
-                  <div className="border-2 border-black bg-white rounded overflow-hidden shadow-xs">
-                    <div className="bg-emerald-600 text-white text-[8px] sm:text-[9px] font-black uppercase text-center py-1 border-b border-black px-0.5">
-                      KEPALA URUSAN PERENCANAAN
-                    </div>
-                    <div className="p-1.5 text-center text-xs font-black text-black uppercase">
-                      {kaurPerencanaan.nama}
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-
-            {/* 6. GARIS VERTIKAL UTAMA TURUN KE BARIS KASUN */}
-            <div className="relative h-10">
-              <div className="absolute left-[50%] top-0 bottom-0 w-0.5 bg-black" />
-            </div>
-
-            {/* 7. GARIS HORIZONTAL SPANNING KE 4 KEPALA DUSUN */}
-            <div className="relative h-6">
-              {/* Garis Horizontal menyambung 4 Kasun dari 12.5% sampai 87.5% */}
-              <div className="absolute left-[12.5%] right-[12.5%] top-0 h-0.5 bg-black" />
-              
-              {/* Drop Line Kasun 1 (12.5%) */}
-              <div className="absolute left-[12.5%] top-0 bottom-0 w-0.5 bg-black" />
-              {/* Drop Line Kasun 2 (37.5%) */}
-              <div className="absolute left-[37.5%] top-0 bottom-0 w-0.5 bg-black" />
-              {/* Drop Line Kasun 3 (62.5%) */}
-              <div className="absolute left-[62.5%] top-0 bottom-0 w-0.5 bg-black" />
-              {/* Drop Line Kasun 4 (87.5%) */}
-              <div className="absolute left-[87.5%] top-0 bottom-0 w-0.5 bg-black" />
-            </div>
-
-            {/* 8. BARIS 4 KEPALA DUSUN (GONGSENG 1, GONGSENG 2, KRANDEKAN, GARUREJO) */}
-            <div className="grid grid-cols-4 gap-3">
-              {/* Kasun 1 */}
-              <div className="border-2 border-black bg-white rounded overflow-hidden shadow-xs">
-                <div className="bg-emerald-600 text-white text-[9px] font-black uppercase text-center py-1 border-b border-black px-0.5">
-                  {kasun1.jabatan}
-                </div>
-                <div className="p-2 text-center text-xs font-black text-black uppercase">
-                  {kasun1.nama}
-                </div>
-              </div>
-
-              {/* Kasun 2 */}
-              <div className="border-2 border-black bg-white rounded overflow-hidden shadow-xs">
-                <div className="bg-emerald-600 text-white text-[9px] font-black uppercase text-center py-1 border-b border-black px-0.5">
-                  {kasun2.jabatan}
-                </div>
-                <div className="p-2 text-center text-xs font-black text-black uppercase">
-                  {kasun2.nama}
-                </div>
-              </div>
-
-              {/* Kasun 3 */}
-              <div className="border-2 border-black bg-white rounded overflow-hidden shadow-xs">
-                <div className="bg-emerald-600 text-white text-[9px] font-black uppercase text-center py-1 border-b border-black px-0.5">
-                  {kasun3.jabatan}
-                </div>
-                <div className="p-2 text-center text-xs font-black text-black uppercase">
-                  {kasun3.nama}
-                </div>
-              </div>
-
-              {/* Kasun 4 */}
-              <div className="border-2 border-black bg-white rounded overflow-hidden shadow-xs">
-                <div className="bg-emerald-600 text-white text-[9px] font-black uppercase text-center py-1 border-b border-black px-0.5">
-                  {kasun4.jabatan}
-                </div>
-                <div className="p-2 text-center text-xs font-black text-black uppercase">
-                  {kasun4.nama}
-                </div>
+              <div className="py-2 text-center text-sm font-black text-black uppercase flex-grow flex items-center justify-center">
+                {kades.nama}
               </div>
             </div>
 
-            {/* 9. STAMP KEPALA DESA (KANAN BAWAH) */}
-            <div className="flex justify-end pt-6">
-              <div className="border-2 border-black bg-white p-2.5 rounded text-center w-52 shadow-xs">
-                <div className="text-[10px] font-black uppercase text-black">KEPALA DESA</div>
-                <div className="h-5" />
-                <div className="text-xs font-black text-black uppercase underline tracking-tight">
-                  {kades.nama}
-                </div>
+            {/* ROW 2: KASI & SEKDES */}
+            {/* Kasi 1 (Pemerintahan) */}
+            <div className="absolute left-[20px] top-[210px] w-[135px] h-[70px] border-2 border-black bg-white rounded overflow-hidden shadow-xs z-20 flex flex-col justify-between">
+              <div className="bg-emerald-600 text-white text-[8px] font-black uppercase text-center py-1 border-b border-black leading-tight">
+                KEPALA SEKSI PEMERINTAHAN
+              </div>
+              <div className="py-1.5 text-center text-xs font-black text-black uppercase flex-grow flex items-center justify-center">
+                {kasiPem.nama}
+              </div>
+            </div>
+
+            {/* Kasi 2 (Kesejahteraan) */}
+            <div className="absolute left-[170px] top-[210px] w-[135px] h-[70px] border-2 border-black bg-white rounded overflow-hidden shadow-xs z-20 flex flex-col justify-between">
+              <div className="bg-emerald-600 text-white text-[8px] font-black uppercase text-center py-1 border-b border-black leading-tight">
+                KEPALA SEKSI KESEJAHTERAAN
+              </div>
+              <div className="py-1.5 text-center text-xs font-black text-black uppercase flex-grow flex items-center justify-center">
+                {kasiKesra.nama}
+              </div>
+            </div>
+
+            {/* Kasi 3 (Pelayanan) */}
+            <div className="absolute left-[320px] top-[210px] w-[135px] h-[70px] border-2 border-black bg-white rounded overflow-hidden shadow-xs z-20 flex flex-col justify-between">
+              <div className="bg-emerald-600 text-white text-[8px] font-black uppercase text-center py-1 border-b border-black leading-tight">
+                KEPALA SEKSI PELAYANAN
+              </div>
+              <div className="py-1.5 text-center text-xs font-black text-black uppercase flex-grow flex items-center justify-center">
+                {kasiPelayanan.nama}
+              </div>
+            </div>
+
+            {/* SEKRETARIS DESA (Left 620px, Top 210px, Width 240px, Height 65px) */}
+            <div className="absolute left-[620px] top-[210px] w-[240px] h-[65px] border-2 border-black bg-white rounded overflow-hidden shadow-xs z-20 flex flex-col justify-between">
+              <div className="bg-amber-600 text-white text-[9.5px] font-black uppercase text-center py-1 border-b border-black">
+                SEKRETARIS DESA
+              </div>
+              <div className="py-1.5 text-center text-xs font-black text-black uppercase flex-grow flex items-center justify-center">
+                {sekdes.nama}
+              </div>
+            </div>
+
+            {/* ROW 3: KAUR (UNDER SEKDES) */}
+            {/* Kaur 1 (TU & Umum) */}
+            <div className="absolute left-[510px] top-[330px] w-[140px] h-[75px] border-2 border-black bg-white rounded overflow-hidden shadow-xs z-20 flex flex-col justify-between">
+              <div className="bg-emerald-600 text-white text-[7.5px] font-black uppercase text-center py-1 border-b border-black leading-tight">
+                KEPALA URUSAN TATA USAHA DAN UMUM
+              </div>
+              <div className="py-1.5 text-center text-[11px] font-black text-black uppercase flex-grow flex items-center justify-center">
+                {kaurUmum.nama}
+              </div>
+            </div>
+
+            {/* Kaur 2 (Keuangan) */}
+            <div className="absolute left-[665px] top-[330px] w-[140px] h-[75px] border-2 border-black bg-white rounded overflow-hidden shadow-xs z-20 flex flex-col justify-between">
+              <div className="bg-emerald-600 text-white text-[7.5px] font-black uppercase text-center py-1 border-b border-black leading-tight">
+                KEPALA URUSAN KEUANGAN
+              </div>
+              <div className="py-1.5 text-center text-[11px] font-black text-black uppercase flex-grow flex items-center justify-center">
+                {kaurKeuangan.nama}
+              </div>
+            </div>
+
+            {/* Kaur 3 (Perencanaan) */}
+            <div className="absolute left-[820px] top-[330px] w-[140px] h-[75px] border-2 border-black bg-white rounded overflow-hidden shadow-xs z-20 flex flex-col justify-between">
+              <div className="bg-emerald-600 text-white text-[7.5px] font-black uppercase text-center py-1 border-b border-black leading-tight">
+                KEPALA URUSAN PERENCANAAN
+              </div>
+              <div className="py-1.5 text-center text-[11px] font-black text-black uppercase flex-grow flex items-center justify-center">
+                {kaurPerencanaan.nama}
+              </div>
+            </div>
+
+            {/* ROW 4: 4 KEPALA DUSUN */}
+            {/* Kasun 1 */}
+            <div className="absolute left-[20px] top-[480px] w-[225px] h-[65px] border-2 border-black bg-white rounded overflow-hidden shadow-xs z-20 flex flex-col justify-between">
+              <div className="bg-emerald-600 text-white text-[8.5px] font-black uppercase text-center py-1 border-b border-black">
+                {kasun1.jabatan}
+              </div>
+              <div className="py-1.5 text-center text-xs font-black text-black uppercase flex-grow flex items-center justify-center">
+                {kasun1.nama}
+              </div>
+            </div>
+
+            {/* Kasun 2 */}
+            <div className="absolute left-[265px] top-[480px] w-[225px] h-[65px] border-2 border-black bg-white rounded overflow-hidden shadow-xs z-20 flex flex-col justify-between">
+              <div className="bg-emerald-600 text-white text-[8.5px] font-black uppercase text-center py-1 border-b border-black">
+                {kasun2.jabatan}
+              </div>
+              <div className="py-1.5 text-center text-xs font-black text-black uppercase flex-grow flex items-center justify-center">
+                {kasun2.nama}
+              </div>
+            </div>
+
+            {/* Kasun 3 */}
+            <div className="absolute left-[510px] top-[480px] w-[225px] h-[65px] border-2 border-black bg-white rounded overflow-hidden shadow-xs z-20 flex flex-col justify-between">
+              <div className="bg-emerald-600 text-white text-[8.5px] font-black uppercase text-center py-1 border-b border-black">
+                {kasun3.jabatan}
+              </div>
+              <div className="py-1.5 text-center text-xs font-black text-black uppercase flex-grow flex items-center justify-center">
+                {kasun3.nama}
+              </div>
+            </div>
+
+            {/* Kasun 4 */}
+            <div className="absolute left-[755px] top-[480px] w-[225px] h-[65px] border-2 border-black bg-white rounded overflow-hidden shadow-xs z-20 flex flex-col justify-between">
+              <div className="bg-emerald-600 text-white text-[8.5px] font-black uppercase text-center py-1 border-b border-black">
+                {kasun4.jabatan}
+              </div>
+              <div className="py-1.5 text-center text-xs font-black text-black uppercase flex-grow flex items-center justify-center">
+                {kasun4.nama}
+              </div>
+            </div>
+
+            {/* CAP PENGESAHAN KADES (KANAN BAWAH) */}
+            <div className="absolute left-[760px] top-[565px] w-[220px] border-2 border-black bg-white p-2 rounded text-center shadow-xs z-20">
+              <div className="text-[9px] font-black uppercase text-black">KEPALA DESA</div>
+              <div className="h-5" />
+              <div className="text-[11px] font-black text-black uppercase underline tracking-tight">
+                {kades.nama}
               </div>
             </div>
 
