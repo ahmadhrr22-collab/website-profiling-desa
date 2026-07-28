@@ -54,7 +54,7 @@ export function SOTKDiagram({ devices }: SOTKDiagramProps) {
           <span className="text-[10px] font-extrabold tracking-widest text-emerald-400 uppercase block mb-0.5">
             Pemerintah Desa Gongseng
           </span>
-          <h3 className="text-lg sm:text-xl font-black tracking-tight">
+          <h3 className="text-lg sm:text-xl font-black tracking-tight text-white">
             Papan Susunan Organisasi & Tata Kerja (SOTK)
           </h3>
         </div>
@@ -69,7 +69,7 @@ export function SOTKDiagram({ devices }: SOTKDiagramProps) {
             }`}
           >
             <Layers className="w-3.5 h-3.5" />
-            <span>Bagan Digital Presisi (1:1)</span>
+            <span>Bagan Digital</span>
           </button>
           <button
             onClick={() => setViewMode('photo')}
