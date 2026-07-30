@@ -79,20 +79,20 @@ export function StatistikSection({ data }: StatistikSectionProps) {
           return (
             <div
               key={idx}
-              className="bg-white/80 backdrop-blur-md p-6 rounded-2xl border border-gray-100 shadow-md hover:shadow-lg transition-all duration-300 flex flex-col justify-between"
+              className="bg-white/90 backdrop-blur-md p-6 rounded-2xl border border-gray-200/80 shadow-md hover:shadow-xl hover:-translate-y-1.5 hover:border-emerald-400 transition-all duration-300 flex flex-col justify-between group cursor-default"
             >
               <div className="flex items-center justify-between mb-4">
-                <span className="text-sm font-semibold text-gray-500">{stat.label}</span>
-                <div className={`p-2.5 rounded-xl border ${stat.color}`}>
-                  <Icon className="w-6 h-6" />
+                <span className="text-xs font-bold uppercase tracking-wider text-gray-500">{stat.label}</span>
+                <div className={`p-3 rounded-xl border ${stat.color} group-hover:scale-110 transition-transform duration-300`}>
+                  <Icon className="w-5 h-5" />
                 </div>
               </div>
               <div>
-                <div className="text-3xl font-extrabold text-gray-900 tracking-tight mb-1">
+                <div className="text-3xl font-black text-gray-950 tracking-tight mb-1 group-hover:text-emerald-700 transition-colors">
                   {formatNumber(stat.value)}
-                  <span className="text-sm font-normal text-gray-500">{stat.suffix}</span>
+                  <span className="text-sm font-semibold text-gray-500 ml-1">{stat.suffix}</span>
                 </div>
-                <p className="text-xs text-gray-500">{stat.desc}</p>
+                <p className="text-xs text-gray-500 leading-normal">{stat.desc}</p>
               </div>
             </div>
           )

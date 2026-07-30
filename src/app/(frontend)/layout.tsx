@@ -2,6 +2,7 @@ import React from 'react'
 import { Plus_Jakarta_Sans, Inter } from 'next/font/google'
 import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/layout/Footer'
+import { BackToTop } from '@/components/shared/BackToTop'
 import './styles.css'
 
 const plusJakartaSans = Plus_Jakarta_Sans({
@@ -32,6 +33,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           {children}
         </main>
         <Footer />
+        <BackToTop />
       </body>
     </html>
   )

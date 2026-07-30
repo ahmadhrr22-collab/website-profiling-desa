@@ -11,25 +11,25 @@ interface PageHeroProps {
 
 export function PageHero({ badge, title, description, icon: Icon }: PageHeroProps) {
   return (
-    <section className="relative bg-emerald-950 py-16 sm:py-20 text-center text-white overflow-hidden border-b border-emerald-900/60">
+    <section className="relative bg-emerald-950 pt-16 pb-20 sm:pt-20 sm:pb-24 text-center text-white overflow-hidden border-b border-emerald-900/60">
       {/* Background Scenic Image */}
       <div className="absolute inset-0 z-0">
         <Image
           src="/images/hero-bg-village.jpg"
           alt="Latar Belakang Pemandangan Desa Gongseng"
           fill
-          className="object-cover opacity-30 mix-blend-luminosity"
+          className="object-cover opacity-30 mix-blend-luminosity scale-105 transition-transform duration-10000"
           priority
         />
         <div className="absolute inset-0 bg-gradient-to-b from-emerald-950/90 via-emerald-950/85 to-emerald-950/95" />
       </div>
 
-      {/* Decorative Radial Lighting */}
-      <div className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_top,rgba(52,211,153,0.15),transparent_70%)] pointer-events-none" />
+      {/* Decorative Ambient Radial Glow */}
+      <div className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_top,rgba(52,211,153,0.18),transparent_65%)] pointer-events-none" />
 
       {/* Content Container */}
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
-        <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-extrabold text-emerald-300 bg-emerald-900/80 border border-emerald-700/60 uppercase tracking-widest shadow-xs">
+        <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-extrabold text-emerald-300 bg-emerald-900/80 border border-emerald-700/60 uppercase tracking-widest shadow-sm backdrop-blur-xs">
           {Icon && <Icon className="w-3.5 h-3.5" />}
           {badge}
         </span>
@@ -39,6 +39,17 @@ export function PageHero({ badge, title, description, icon: Icon }: PageHeroProp
         <p className="text-emerald-100/90 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed font-normal">
           {description}
         </p>
+      </div>
+
+      {/* Smooth Bottom Curve Accent Divider */}
+      <div className="absolute bottom-0 inset-x-0 h-6 pointer-events-none z-10 overflow-hidden leading-none">
+        <svg
+          viewBox="0 0 1200 120"
+          preserveAspectRatio="none"
+          className="relative block w-full h-6 text-gray-50/50 fill-current"
+        >
+          <path d="M0,0 C150,90 350,-40 500,45 C650,130 900,10 1200,50 L1200,120 L0,120 Z" />
+        </svg>
       </div>
     </section>
   )
