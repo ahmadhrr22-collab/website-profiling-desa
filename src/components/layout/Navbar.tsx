@@ -46,15 +46,9 @@ export function Navbar() {
               />
             </div>
             <div>
-              <div className="flex items-center gap-2">
-                <h1 className="text-lg sm:text-xl font-extrabold tracking-tight text-white leading-tight group-hover:text-emerald-300 transition-colors">
-                  Desa Gongseng
-                </h1>
-                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold text-emerald-300 bg-emerald-900/80 border border-emerald-700/60">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                  Aktif
-                </span>
-              </div>
+              <h1 className="text-lg sm:text-xl font-extrabold tracking-tight text-white leading-tight group-hover:text-emerald-300 transition-colors">
+                Desa Gongseng
+              </h1>
               <p className="text-xs text-light/80 font-medium tracking-wide">
                 Kec. Megaluh, Kab. Jombang
               </p>
