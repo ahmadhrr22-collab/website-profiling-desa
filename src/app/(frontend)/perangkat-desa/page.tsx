@@ -78,13 +78,13 @@ export default async function PerangkatDesaPage() {
       {/* Hero Header Banner */}
       <PageHero
         badge="Struktur Pemerintahan Desa"
-        title="Aparatur & Perangkat Desa"
+        title="Perangkat Desa"
         description="Susunan Organisasi dan Tata Kerja (SOTK) Pemerintah Desa Gongseng, Kec. Megaluh, Kab. Jombang."
         icon={Award}
       />
 
       {/* Main Container */}
-      <main className="max-w-7xl mx-auto px-6 py-16 space-y-20">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 space-y-16">
 
         {/* 1. SEKSI DIAGRAM VISUAL SOTK 1:1 */}
         <section className="space-y-4">

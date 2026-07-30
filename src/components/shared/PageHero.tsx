@@ -11,7 +11,7 @@ interface PageHeroProps {
 
 export function PageHero({ badge, title, description, icon: Icon }: PageHeroProps) {
   return (
-    <section className="relative bg-emerald-950 py-20 sm:py-24 text-center text-white overflow-hidden border-b border-emerald-900/60">
+    <section className="relative bg-emerald-950 py-16 sm:py-20 text-center text-white overflow-hidden border-b border-emerald-900/60">
       {/* Background Scenic Image */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -28,7 +28,7 @@ export function PageHero({ badge, title, description, icon: Icon }: PageHeroProp
       <div className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_top,rgba(52,211,153,0.15),transparent_70%)] pointer-events-none" />
 
       {/* Content Container */}
-      <div className="relative z-10 max-w-4xl mx-auto px-6 space-y-4">
+      <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
         <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-extrabold text-emerald-300 bg-emerald-900/80 border border-emerald-700/60 uppercase tracking-widest shadow-xs">
           {Icon && <Icon className="w-3.5 h-3.5" />}
           {badge}

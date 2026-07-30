@@ -86,13 +86,13 @@ export default async function ProfilDesaPage() {
       {/* Hero Header Banner */}
       <PageHero
         badge="Mengenal Lebih Dekat"
-        title="Profil Desa Gongseng"
+        title="Profil Desa"
         description="Sejarah, Visi Misi, Wilayah Geografis, serta Potensi Unggulan Desa Gongseng, Kecamatan Megaluh, Kabupaten Jombang."
         icon={BookOpen}
       />
 
       {/* Main Content Grid */}
-      <main className="max-w-7xl mx-auto px-6 py-16 space-y-20">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 space-y-16">
         
         {/* Section 1: Sejarah */}
         <section id="sejarah" className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start bg-white p-8 md:p-12 rounded-3xl border border-gray-100 shadow-sm">

@@ -180,13 +180,13 @@ export default async function LayananInformasiPage() {
       {/* Hero Header Banner */}
       <PageHero
         badge="Portal Informasi Publik"
-        title="Layanan & Informasi Desa"
+        title="Layanan & Informasi"
         description="Ikuti berbagai pengumuman resmi pemerintah desa serta jadwal agenda kegiatan kemasyarakatan terbaru di wilayah Desa Gongseng."
         icon={FileText}
       />
 
       {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-6 py-16">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
         <LayananInformasiTabs kegiatanItems={finalKegiatan} pengumumanItems={finalPengumuman} />
       </main>
     </div>

@@ -93,13 +93,13 @@ export default function PotensiPertanianPage() {
       {/* 1. Hero Header Banner */}
       <PageHero
         badge="Sektor Unggulan Agraris"
-        title="Potensi Pertanian & Lahan Sawah Desa Gongseng"
+        title="Potensi & Pertanian"
         description="Menyelami kekayaan alam Desa Gongseng, Kecamatan Megaluh. Hamparan sawah seluas 170 Hektar yang subur dengan produktivitas panen padi mencapai 8 Ton per Hektar."
         icon={Sprout}
       />
 
       {/* 2. Main Body Container */}
-      <main className="max-w-7xl mx-auto px-6 py-16 space-y-20">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 space-y-16">
 
         {/* STATISTIK AGRARIS DESA */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">

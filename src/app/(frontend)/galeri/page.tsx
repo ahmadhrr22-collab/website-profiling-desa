@@ -109,13 +109,13 @@ export default async function GaleriPage() {
       {/* Hero Header Banner */}
       <PageHero
         badge="Dokumentasi Visual"
-        title="Galeri Kegiatan Desa"
+        title="Galeri"
         description="Kumpulan potret pembangunan infrastruktur, kegiatan kemasyarakatan, kebudayaan lokal, serta pesona alam pertanian Desa Gongseng."
         icon={ImageIcon}
       />
 
       {/* Main Content (Interactive Filters and Lightbox) */}
-      <main className="max-w-7xl mx-auto px-6 py-16">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
         <GaleriInteractiveGrid items={finalDocs} />
       </main>
     </div>
