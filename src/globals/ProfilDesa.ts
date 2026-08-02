@@ -54,5 +54,39 @@ export const ProfilDesa: GlobalConfig = {
       type: 'richText',
       label: 'Potensi Unggulan Desa (Opsional)',
     },
+    {
+      name: 'situsBersejarah',
+      type: 'array',
+      label: 'Situs & Monumen Bersejarah Desa',
+      fields: [
+        {
+          name: 'nama',
+          type: 'text',
+          required: true,
+          label: 'Nama Situs / Monumen',
+        },
+        {
+          name: 'kategori',
+          type: 'text',
+          label: 'Kategori / Jenis',
+        },
+        {
+          name: 'deskripsi',
+          type: 'textarea',
+          label: 'Deskripsi Sejarah',
+        },
+        {
+          name: 'lokasi',
+          type: 'text',
+          label: 'Lokasi Situs',
+        },
+        {
+          name: 'foto',
+          type: 'upload',
+          relationTo: 'media',
+          label: 'Foto Situs',
+        },
+      ],
+    },
   ],
 }

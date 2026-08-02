@@ -1,21 +1,22 @@
 import React from 'react'
+import Image from 'next/image'
 import { getPayload } from '@/lib/payload'
 import { RichText } from '@/components/shared/RichText'
 import { PageHero } from '@/components/shared/PageHero'
-import { MapPin, Shield, Compass, Star, Map, BookOpen } from 'lucide-react'
+import { MapPin, Shield, Compass, Star, Map, BookOpen, Landmark } from 'lucide-react'
 
 export const revalidate = 60
 
 export const metadata = {
   title: 'Profil Desa - Desa Gongseng',
-  description: 'Sejarah singkat, visi & misi, batas geografis, luas wilayah, serta potensi ekonomi dan pertanian Desa Gongseng, Kecamatan Megaluh, Kabupaten Jombang.',
+  description: 'Sejarah singkat, visi & misi, batas geografis, situs monumen bersejarah, serta potensi ekonomi Desa Gongseng, Kecamatan Megaluh, Kabupaten Jombang.',
 }
 
 // Peta default Desa Gongseng, Megaluh, Jombang
 const MAP_DEFAULT = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15822.951554160494!2d112.18683533446657!3d-7.495289907106093!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e783fd979600e1b%3A0xc3f5e3fcfcf8a5ba!2sGongseng%2C%20Megaluh%2C%20Jombang%20Regency%2C%20East%20Java!5e0!3m2!1sen!2sid!4v1717930000000!5m2!1sen!2sid"
 
 export default async function ProfilDesaPage() {
-  let data = null
+  let data: any = null
   let demografi = null
 
   try {
@@ -73,6 +74,23 @@ export default async function ProfilDesaPage() {
     <p>Selain pertanian, sektor ekonomi kreatif yang digerakkan oleh industri rumah tangga (UMKM) seperti keripik tempe, batik tulis, dan kerajinan anyaman bambu menjadi roda penggerak ekonomi pendukung bagi kesejahteraan keluarga warga Desa Gongseng.</p>
   `
 
+  const situsFallback = [
+    {
+      nama: 'Patung Monumen Brigjen Kretarto',
+      kategori: 'Monumen Pahlawan',
+      deskripsi: 'Monumen bersejarah sebagai bentuk pengabdian dan penghormatan tinggi atas rekam jejak perjuangan Brigadir Jenderal Kretarto, tokoh komandan pejuang kemerdekaan Indonesia yang memiliki nilai sejarah perjuangan di wilayah Jombang dan Desa Gongseng.',
+      lokasi: 'Wilayah Desa Gongseng, Megaluh',
+      foto: '/images/situs/monumen-kretarto.jpg',
+    },
+    {
+      nama: 'Relief Pahlawan Perjuangan',
+      kategori: 'Relief Sejarah & Cagar Budaya',
+      deskripsi: 'Ukiran dinding relief bersejarah yang mengabadikan rekam jejak perjuangan, keberanian, dan semangat gotong-royong warga Desa Gongseng dalam mempertahankan kedaulatan NKRI pada masa perang kemerdekaan.',
+      lokasi: 'Wilayah Desa Gongseng, Megaluh',
+      foto: '/images/situs/relief-pahlawan.jpg',
+    },
+  ]
+
   const sejarah = data?.sejarah || sejarahFallback
   const visi = data?.visi || visiFallback
   const misi = data?.misi || misiFallback
@@ -80,6 +98,17 @@ export default async function ProfilDesaPage() {
   const luasWilayah = data?.luasWilayah || 'Desa Gongseng terbagi menjadi beberapa Dusun dengan luas lahan pertanian produktif yang mendominasi sebagian besar wilayah desa.'
   const petaUrl = data?.petaEmbed || MAP_DEFAULT
   const potensi = data?.potensi || potensiFallback
+
+  // Menggabungkan data CMS jika admin telah mengunggah foto/situs asli
+  const situsList = (data?.situsBersejarah && data.situsBersejarah.length > 0)
+    ? data.situsBersejarah.map((s: any, idx: number) => ({
+        nama: s.nama || (idx === 0 ? 'Patung Monumen Brigjen Kretarto' : 'Relief Pahlawan Perjuangan'),
+        kategori: s.kategori || 'Situs Bersejarah',
+        deskripsi: s.deskripsi || '',
+        lokasi: s.lokasi || 'Desa Gongseng, Megaluh',
+        foto: (s.foto && typeof s.foto === 'object' && s.foto.url) ? s.foto.url : (idx === 0 ? '/images/situs/monumen-kretarto.jpg' : '/images/situs/relief-pahlawan.jpg'),
+      }))
+    : situsFallback
 
   return (
     <div className="flex flex-col min-h-screen bg-gray-50/50">
@@ -114,30 +143,44 @@ export default async function ProfilDesaPage() {
 
         {/* Section 2: Visi & Misi */}
         <section id="visi-misi" className="space-y-8">
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <div className="w-12 h-12 rounded-2xl bg-emerald-100 flex items-center justify-center text-emerald-700 mx-auto mb-4">
+          <div className="text-center max-w-2xl mx-auto space-y-2">
+            <div className="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-700 flex items-center justify-center mx-auto mb-3">
               <Shield className="w-6 h-6" />
             </div>
-            <h2 className="text-2xl md:text-3xl font-extrabold text-gray-900 tracking-tight">
-              Visi & Misi Desa
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">
+              Visi & Misi Pembangunan
             </h2>
-            <p className="text-sm text-gray-500 mt-2">
-              Arah kebijakan strategis dan program prioritas pembangunan jangka panjang Desa Gongseng.
+            <p className="text-sm text-gray-500">
+              Arah kebijakan dan komitmen Pemerintah Desa Gongseng dalam melayani warga
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
             {/* Box Visi */}
-            <div className="bg-gradient-to-br from-emerald-900 to-emerald-950 text-white p-8 md:p-10 rounded-3xl shadow-xl flex flex-col justify-center relative overflow-hidden group">
-              <div className="absolute -right-10 -bottom-10 w-40 h-40 bg-emerald-800/20 rounded-full blur-2xl group-hover:scale-125 transition-transform duration-500" />
-              <span className="text-emerald-400 font-bold uppercase tracking-wider text-xs mb-3 block">VISI UTAMA</span>
-              <RichText content={visi} className="text-emerald-50 prose-headings:text-white" />
+            <div className="lg:col-span-5 bg-gradient-to-br from-emerald-900 to-emerald-950 text-white p-8 md:p-10 rounded-3xl shadow-xl flex flex-col justify-between">
+              <div className="space-y-4">
+                <span className="text-xs font-extrabold uppercase tracking-widest text-emerald-400 bg-emerald-950/80 px-3 py-1 rounded-full border border-emerald-800 inline-block">
+                  Visi Desa
+                </span>
+                <div className="text-emerald-100 leading-relaxed">
+                  <RichText content={visi} className="text-emerald-100" />
+                </div>
+              </div>
+              <div className="pt-6 border-t border-emerald-800/80 text-xs text-emerald-300 font-semibold uppercase tracking-wider">
+                Pemerintah Desa Gongseng
+              </div>
             </div>
 
             {/* Box Misi */}
-            <div className="bg-white p-8 md:p-10 rounded-3xl border border-gray-100 shadow-sm flex flex-col justify-center">
-              <span className="text-emerald-700 font-bold uppercase tracking-wider text-xs mb-4 block">MISI PEMBANGUNAN</span>
-              <RichText content={misi} className="text-gray-700 list-decimal" />
+            <div className="lg:col-span-7 bg-white p-8 md:p-10 rounded-3xl border border-gray-100 shadow-sm flex flex-col justify-between">
+              <div className="space-y-4">
+                <span className="text-xs font-extrabold uppercase tracking-widest text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-100 inline-block">
+                  Misi Desa
+                </span>
+                <div className="text-gray-700 leading-relaxed">
+                  <RichText content={misi} className="text-gray-700 list-decimal" />
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -187,7 +230,65 @@ export default async function ProfilDesaPage() {
           </div>
         </section>
 
+        {/* Section 4: Situs Bersejarah & Monumen Perjuangan */}
+        <section id="situs-bersejarah" className="space-y-10 pt-6">
+          <div className="text-center max-w-2xl mx-auto space-y-3">
+            <div className="w-12 h-12 rounded-2xl bg-amber-100 text-amber-800 flex items-center justify-center mx-auto border border-amber-200 shadow-sm">
+              <Landmark className="w-6 h-6" />
+            </div>
+            <h2 className="text-3xl font-extrabold text-gray-950 tracking-tight">
+              Situs & Monumen Bersejarah
+            </h2>
+            <p className="text-sm text-gray-500 max-w-lg mx-auto leading-relaxed">
+              Jejak sejarah dan cagar budaya kebanggaan warga Desa Gongseng sebagai bukti rekam jejak perjuangan kemerdekaan.
+            </p>
+            <div className="w-12 h-1 bg-amber-500 mx-auto rounded-full" />
+          </div>
 
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {situsList.map((situs: any, idx: number) => (
+              <div
+                key={idx}
+                className="bg-white rounded-3xl border border-gray-200/90 shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group flex flex-col justify-between"
+              >
+                <div className="relative w-full aspect-16/10 bg-gray-900 overflow-hidden">
+                  <Image
+                    src={situs.foto}
+                    alt={situs.nama}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                  <span className="absolute top-4 left-4 text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full bg-amber-400 text-gray-950 shadow-md">
+                    {situs.kategori}
+                  </span>
+                  <div className="absolute bottom-4 left-4 right-4 text-white">
+                    <h3 className="text-xl font-black text-white leading-tight drop-shadow-md">
+                      {situs.nama}
+                    </h3>
+                  </div>
+                </div>
+
+                <div className="p-6 space-y-4 flex-grow flex flex-col justify-between">
+                  <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                    {situs.deskripsi}
+                  </p>
+
+                  <div className="pt-4 border-t border-gray-100 flex items-center justify-between text-xs text-gray-500">
+                    <div className="flex items-center gap-1.5 font-semibold text-emerald-800">
+                      <MapPin className="w-4 h-4 text-emerald-600 shrink-0" />
+                      <span>{situs.lokasi}</span>
+                    </div>
+                    <span className="text-[11px] bg-emerald-50 text-emerald-800 font-bold px-2.5 py-1 rounded-lg border border-emerald-200">
+                      Cagar Budaya Desa
+                    </span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
 
         {/* Section 5: Potensi Desa */}
         <section id="potensi" className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start bg-white p-8 md:p-12 rounded-3xl border border-gray-100 shadow-sm">
