@@ -20,8 +20,13 @@ const inter = Inter({
 })
 
 export const metadata = {
-  description: 'Portal Resmi Desa Gongseng, Kecamatan Megaluh, Kabupaten Jombang, Jawa Timur.',
-  title: 'Desa Gongseng - Portal Resmi Desa Digital',
+  title: 'Website Profil & Informasi Desa Gongseng',
+  description: 'Pusat Informasi dan Pelayanan Publik Desa Gongseng, Kecamatan Megaluh, Kabupaten Jombang, Jawa Timur.',
+  icons: {
+    icon: '/images/logo-kabupaten-jombang.jpg',
+    shortcut: '/images/logo-kabupaten-jombang.jpg',
+    apple: '/images/logo-kabupaten-jombang.jpg',
+  },
 }
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
