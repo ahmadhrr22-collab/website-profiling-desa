@@ -27,6 +27,9 @@ export const metadata = {
     shortcut: '/images/logo-kabupaten-jombang.jpg',
     apple: '/images/logo-kabupaten-jombang.jpg',
   },
+  verification: {
+    google: 'google1b666ff075e8c962',
+  },
 }
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
