@@ -14,5 +14,15 @@ export const Media: CollectionConfig = {
   ],
   upload: {
     disableLocalStorage: true,
+    mimeTypes: [
+      'image/*',
+      'image/heic',
+      'image/heic-sequence',
+      'image/heif',
+      'image/heif-sequence',
+      '.heic',
+      '.heif',
+      'application/pdf',
+    ],
   },
 }
