@@ -22,17 +22,18 @@ export function SambutanSection({ data }: SambutanSectionProps) {
 
   // Teks sambutan default berupa string HTML jika richText kosong
   const teksDefault = `
-    <p class="leading-relaxed text-gray-700 mb-4">
+    <p class="leading-relaxed text-gray-700 mb-4 font-semibold">
       Assalamualaikum Warahmatullahi Wabarakatuh,
     </p>
     <p class="leading-relaxed text-gray-700 mb-4">
-      Selamat datang di portal resmi digital <strong>Desa Gongseng, Kecamatan Megaluh, Kabupaten Jombang</strong>. Kami berkomitmen penuh untuk menghadirkan keterbukaan informasi publik, kemudahan akses informasi, dan peningkatan efisiensi pelayanan bagi seluruh warga desa.
+      Selamat datang di portal resmi digital <strong>Desa Gongseng, Kecamatan Megaluh, Kabupaten Jombang</strong>. Kami berkomitmen penuh untuk menghadirkan keterbukaan informasi publik dan peningkatan efisiensi layanan bagi seluruh warga desa.
     </p>
     <p class="leading-relaxed text-gray-700 mb-4">
-      Melalui portal website desa ini, kami berharap dapat mempererat silaturahmi serta memberikan kemudahan dalam mengakses informasi seputar profil desa, kelembagaan, potensi pertanian, hingga agenda kegiatan kemasyarakatan.
+      Melalui integrasi program digitalisasi hasil kolaborasi program KKN IPB University ini, kami berharap sekat jarak dan waktu dapat dijembatani. Seluruh warga kini dapat dengan mudah mengakses pengumuman penting, jadwal posyandu, profil desa, hingga produk-produk unggulan dari UMKM lokal kami secara langsung.
     </p>
-    <p class="leading-relaxed text-gray-700">
-      Terima kasih atas dukungan seluruh lapisan masyarakat. Semoga Desa Gongseng semakin maju, sejahtera, dan berkearifan lokal. Wassalamualaikum Warahmatullahi Wabarakatuh.
+    <p class="leading-relaxed text-gray-700 font-semibold">
+      Terima kasih, semoga portal ini membawa manfaat besar bagi kemajuan desa tercinta.<br/>
+      Wassalamualaikum Warahmatullahi Wabarakatuh.
     </p>
   `
 
