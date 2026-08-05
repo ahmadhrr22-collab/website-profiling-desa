@@ -18,10 +18,10 @@ export function PageHero({ badge, title, description, icon: Icon }: PageHeroProp
           src="/images/hero-bg-village.jpg"
           alt="Latar Belakang Pemandangan Desa Gongseng"
           fill
-          className="object-cover opacity-30 mix-blend-luminosity scale-105 transition-transform duration-10000"
+          className="object-cover opacity-65 scale-105 transition-transform duration-10000"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-emerald-950/90 via-emerald-950/85 to-emerald-950/95" />
+        <div className="absolute inset-0 bg-gradient-to-b from-emerald-950/70 via-emerald-950/45 to-emerald-950/80" />
       </div>
 
       {/* Decorative Ambient Radial Glow */}
