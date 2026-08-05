@@ -29,7 +29,7 @@ export function SambutanSection({ data }: SambutanSectionProps) {
       Selamat datang di portal resmi digital <strong>Desa Gongseng, Kecamatan Megaluh, Kabupaten Jombang</strong>. Kami berkomitmen penuh untuk menghadirkan keterbukaan informasi publik dan peningkatan efisiensi layanan bagi seluruh warga desa.
     </p>
     <p class="leading-relaxed text-gray-700 mb-4">
-      Melalui integrasi program digitalisasi hasil kolaborasi program KKN IPB University ini, kami berharap sekat jarak dan waktu dapat dijembatani. Seluruh warga kini dapat dengan mudah mengakses pengumuman penting, jadwal posyandu, profil desa, hingga produk-produk unggulan dari UMKM lokal kami secara langsung.
+      Melalui integrasi program digitalisasi hasil kolaborasi program KKN IPB University ini, kami berharap sekat jarak dan waktu dapat dijembatani. Seluruh warga kini dapat dengan mudah mengakses pengumuman penting, jadwal posyandu, hingga profil desa secara langsung.
     </p>
     <p class="leading-relaxed text-gray-700 font-semibold">
       Terima kasih, semoga portal ini membawa manfaat besar bagi kemajuan desa tercinta.<br/>
