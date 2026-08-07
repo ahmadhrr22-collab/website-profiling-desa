@@ -23,9 +23,9 @@ export const metadata = {
   title: 'Website Profil & Informasi Desa Gongseng',
   description: 'Pusat Informasi dan Pelayanan Publik Desa Gongseng, Kecamatan Megaluh, Kabupaten Jombang, Jawa Timur.',
   icons: {
-    icon: '/images/logo-kabupaten-jombang.jpg',
-    shortcut: '/images/logo-kabupaten-jombang.jpg',
-    apple: '/images/logo-kabupaten-jombang.jpg',
+    icon: '/images/logo-kabupaten-jombang.png',
+    shortcut: '/images/logo-kabupaten-jombang.png',
+    apple: '/images/logo-kabupaten-jombang.png',
   },
   verification: {
     google: 'google1b666ff075e8c962',
