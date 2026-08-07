@@ -11,7 +11,7 @@ interface HeroSectionProps {
 export function HeroSection({ data }: HeroSectionProps) {
   // Setup fallback data
   const tagline = data?.tagline || 'Desa Gongseng Go Digital!'
-  const deskripsi = data?.deskripsi || 'Portal resmi pelayanan dan pusat informasi digital Desa Gongseng, Kec. Megaluh, Kab. Jombang, Jawa Timur.'
+  const deskripsi = data?.deskripsi || 'Pusat informasi digital dan layanan publik terpadu Desa Gongseng, Kecamatan Megaluh, Kabupaten Jombang. Menghubungkan pemerintah desa dan warga secara terbuka, cepat, dan transparan.'
   
   let bgUrl = '/images/footage desa gongseng/dalam_balai.jpg' // Real photo of Balai Desa Gongseng
   if (data?.fotoHero && typeof data.fotoHero === 'object' && 'url' in data.fotoHero) {
