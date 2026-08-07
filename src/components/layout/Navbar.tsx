@@ -35,13 +35,13 @@ export function Navbar() {
           
           {/* Logo & Title */}
           <Link href="/" className="flex items-center gap-3 group" onClick={closeMenu}>
-            <div className="relative w-10 h-10 overflow-hidden rounded-xl bg-white p-0.5 flex items-center justify-center border border-emerald-400/30 shadow-sm shrink-0 group-hover:scale-105 transition-transform duration-300">
+            <div className="relative w-10 h-10 shrink-0 group-hover:scale-105 transition-transform duration-300 flex items-center justify-center">
               <Image
-                src="/images/logo-kabupaten-jombang.jpg"
+                src="/images/logo-kabupaten-jombang.png"
                 alt="Logo Kabupaten Jombang"
-                width={36}
-                height={36}
-                className="object-contain"
+                width={40}
+                height={40}
+                className="object-contain drop-shadow-md"
                 priority
               />
             </div>
