@@ -238,10 +238,10 @@ export default async function ProfilDesaPage() {
               <Compass className="w-6 h-6" />
             </div>
             <h2 className="text-3xl font-extrabold text-gray-950 tracking-tight">
-              Peta Pemetaan Geografis Desa (QGIS HD)
+              Peta Pemetaan Desa
             </h2>
             <p className="text-sm text-gray-500 max-w-xl mx-auto leading-relaxed">
-              Hasil digitalisasi pemetaan geospasial resmi Desa Gongseng karya KKN-T IPB University 2026. Diekstrak langsung dari vektor PDF asli tanpa penurunan kualitas (resolusi 3368 x 2380 piksel).
+              Peta pemetaan geospasial dan batas wilayah Desa Gongseng.
             </p>
             <div className="w-12 h-1 bg-emerald-500 mx-auto rounded-full" />
           </div>
