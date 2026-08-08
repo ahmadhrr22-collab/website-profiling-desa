@@ -4,11 +4,13 @@ export const Pengumuman: CollectionConfig = {
   slug: 'pengumuman',
   labels: {
     singular: 'Pengumuman',
-    plural: 'Pengumuman',
+    plural: 'Pengumuman Desa',
   },
   admin: {
+    group: '📢 Halaman Informasi & Galeri',
     useAsTitle: 'judul',
     defaultColumns: ['judul', 'tanggalTerbit', 'tanggalBerakhir', 'penting'],
+    description: 'Tulis berita, pengumuman penting warga, dan informasi publik di Layanan & Informasi.',
   },
   access: {
     read: () => true,

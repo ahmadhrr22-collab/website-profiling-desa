@@ -2,8 +2,10 @@ import type { GlobalConfig } from 'payload'
 
 export const ProfilDesa: GlobalConfig = {
   slug: 'profil-desa',
+  label: 'Sejarah, Visi Misi & Geografi',
   admin: {
-    group: 'Informasi Desa',
+    group: '📖 Halaman Profil Desa',
+    description: 'Pengaturan teks sejarah desa, visi misi, letak geografis, luas wilayah, serta situs monumen bersejarah.',
   },
   access: {
     read: () => true,

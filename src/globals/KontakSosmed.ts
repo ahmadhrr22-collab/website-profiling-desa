@@ -2,8 +2,10 @@ import type { GlobalConfig } from 'payload'
 
 export const KontakSosmed: GlobalConfig = {
   slug: 'kontak-sosmed',
+  label: '1. Kontak WA & Sosmed Desa',
   admin: {
-    group: 'Informasi Desa',
+    group: '⚙️ Pengaturan & Media',
+    description: 'Pengaturan nomor WhatsApp pelayanan, email resmi, alamat balai desa, dan akun Instagram.',
   },
   access: {
     read: () => true,

@@ -3,10 +3,11 @@ import type { CollectionConfig } from 'payload'
 export const UMKM: CollectionConfig = {
   slug: 'umkm',
   labels: {
-    singular: 'UMKM',
-    plural: 'UMKM',
+    singular: 'Usaha UMKM',
+    plural: 'Arsip Data UMKM',
   },
   admin: {
+    group: '⚙️ Pengaturan & Media',
     useAsTitle: 'nama',
     defaultColumns: ['nama', 'kategori', 'featured', 'aktif'],
   },

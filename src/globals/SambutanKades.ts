@@ -2,8 +2,10 @@ import type { GlobalConfig } from 'payload'
 
 export const SambutanKades: GlobalConfig = {
   slug: 'sambutan-kades',
+  label: '2. Sambutan Kepala Desa',
   admin: {
-    group: 'Halaman Utama',
+    group: '🏠 Halaman Beranda',
+    description: 'Pengaturan foto, nama, jabatan, dan teks kata sambutan Kepala Desa Gongseng.',
   },
   access: {
     read: () => true,

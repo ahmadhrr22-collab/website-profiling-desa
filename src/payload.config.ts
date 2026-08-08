@@ -29,6 +29,9 @@ console.log('Payload Config: UPLOADTHING_TOKEN is present:', !!process.env.UPLOA
 export default buildConfig({
   admin: {
     user: Users.slug,
+    meta: {
+      titleSuffix: '- CMS Portal Desa Gongseng',
+    },
     importMap: {
       baseDir: path.resolve(dirname),
     },

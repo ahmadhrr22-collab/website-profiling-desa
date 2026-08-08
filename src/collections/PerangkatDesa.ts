@@ -4,11 +4,13 @@ export const PerangkatDesa: CollectionConfig = {
   slug: 'perangkat-desa',
   labels: {
     singular: 'Perangkat Desa',
-    plural: 'Perangkat Desa',
+    plural: 'Daftar Perangkat Desa',
   },
   admin: {
+    group: '👥 Halaman Perangkat Desa',
     useAsTitle: 'nama',
     defaultColumns: ['nama', 'jabatan', 'urutan', 'aktif'],
+    description: 'Tambah, ubah foto, nama, dan susunan urutan struktur pemerintahan Perangkat Desa Gongseng.',
   },
   access: {
     read: () => true,

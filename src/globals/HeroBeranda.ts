@@ -2,8 +2,10 @@ import type { GlobalConfig } from 'payload'
 
 export const HeroBeranda: GlobalConfig = {
   slug: 'hero-beranda',
+  label: '1. Banner & Tagline Utama',
   admin: {
-    group: 'Halaman Utama',
+    group: '🏠 Halaman Beranda',
+    description: 'Pengaturan gambar latar hero banner dan kalimat tagline utama di halaman depan beranda.',
   },
   access: {
     read: () => true,

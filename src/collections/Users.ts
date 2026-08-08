@@ -3,11 +3,13 @@ import type { CollectionConfig } from 'payload'
 export const Users: CollectionConfig = {
   slug: 'users',
   labels: {
-    singular: 'User',
-    plural: 'User',
+    singular: 'Pengelola CMS',
+    plural: 'Akun Pengelola CMS',
   },
   admin: {
+    group: '⚙️ Pengaturan & Media',
     useAsTitle: 'email',
+    description: 'Daftar akun admin yang berhak login dan mengedit data CMS Desa Gongseng.',
   },
   auth: true,
   fields: [

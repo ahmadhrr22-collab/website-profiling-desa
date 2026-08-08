@@ -3,10 +3,11 @@ import type { CollectionConfig } from 'payload'
 export const Wisata: CollectionConfig = {
   slug: 'wisata',
   labels: {
-    singular: 'Wisata',
-    plural: 'Wisata',
+    singular: 'Destinasi Wisata',
+    plural: 'Arsip Destinasi Wisata',
   },
   admin: {
+    group: '⚙️ Pengaturan & Media',
     useAsTitle: 'nama',
     defaultColumns: ['nama', 'kategori', 'tiket', 'jamBuka', 'featured'],
   },

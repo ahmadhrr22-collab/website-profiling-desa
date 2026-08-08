@@ -2,8 +2,10 @@ import type { GlobalConfig } from 'payload'
 
 export const DataDemografi: GlobalConfig = {
   slug: 'data-demografi',
+  label: '3. Data Demografi Penduduk',
   admin: {
-    group: 'Informasi Desa',
+    group: '🏠 Halaman Beranda',
+    description: 'Data statistik jumlah penduduk, KK, jenis kelamin, serta batas wilayah administratif desa.',
   },
   access: {
     read: () => true,

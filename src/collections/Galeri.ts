@@ -3,12 +3,14 @@ import type { CollectionConfig } from 'payload'
 export const Galeri: CollectionConfig = {
   slug: 'galeri',
   labels: {
-    singular: 'Galeri',
-    plural: 'Galeri',
+    singular: 'Foto Galeri',
+    plural: 'Galeri Foto Desa',
   },
   admin: {
+    group: '📢 Halaman Informasi & Galeri',
     useAsTitle: 'judul',
     defaultColumns: ['judul', 'kategori', 'tanggal'],
+    description: 'Upload dan kelola foto kegiatan, fasilitas, dan pemandangan desa di halaman Galeri.',
   },
   access: {
     read: () => true,

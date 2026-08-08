@@ -3,12 +3,14 @@ import type { CollectionConfig } from 'payload'
 export const Kegiatan: CollectionConfig = {
   slug: 'kegiatan',
   labels: {
-    singular: 'Kegiatan',
-    plural: 'Kegiatan',
+    singular: 'Agenda Kegiatan',
+    plural: 'Jadwal & Agenda Kegiatan',
   },
   admin: {
+    group: '📢 Halaman Informasi & Galeri',
     useAsTitle: 'judul',
     defaultColumns: ['judul', 'kategori', 'tanggal', 'waktu', 'lokasi'],
+    description: 'Jadwalkan agenda Posyandu, rapat warga, dan kegiatan kemasyarakatan di Layanan & Informasi.',
   },
   access: {
     read: () => true,
