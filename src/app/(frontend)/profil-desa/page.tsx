@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { getPayload } from '@/lib/payload'
 import { RichText } from '@/components/shared/RichText'
 import { PageHero } from '@/components/shared/PageHero'
+import { InteractiveMapViewer } from '@/components/shared/InteractiveMapViewer'
 import { MapPin, Shield, Compass, Star, Map, BookOpen, Landmark } from 'lucide-react'
 
 export const revalidate = 60
@@ -228,6 +229,24 @@ export default async function ProfilDesaPage() {
               </span>
             </div>
           </div>
+        </section>
+
+        {/* Section: Peta Pemetaan Digital Interaktif QGIS */}
+        <section id="peta-gis" className="space-y-8 pt-4">
+          <div className="text-center max-w-3xl mx-auto space-y-3">
+            <div className="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-800 flex items-center justify-center mx-auto border border-emerald-200 shadow-sm">
+              <Compass className="w-6 h-6" />
+            </div>
+            <h2 className="text-3xl font-extrabold text-gray-950 tracking-tight">
+              Peta Pemetaan Digital Interaktif (QGIS)
+            </h2>
+            <p className="text-sm text-gray-500 max-w-xl mx-auto leading-relaxed">
+              Hasil digitalisasi peta pemetaan geospasial Desa Gongseng karya KKN-T IPB University 2026. Perbesar, geser, dan klik titik lokasi untuk melihat dokumentasi foto asli dan petunjuk arah.
+            </p>
+            <div className="w-12 h-1 bg-emerald-500 mx-auto rounded-full" />
+          </div>
+
+          <InteractiveMapViewer />
         </section>
 
         {/* Section 4: Situs Bersejarah & Monumen Perjuangan */}
