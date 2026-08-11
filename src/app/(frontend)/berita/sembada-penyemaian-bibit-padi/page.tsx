@@ -104,14 +104,14 @@ export default function BeritaSembadaPage() {
 
         {/* Featured Main Photo Banner with News Caption */}
         <figure className="space-y-2 bg-white p-3 rounded-3xl border border-gray-200/80 shadow-sm overflow-hidden">
-          <div className="relative w-full aspect-16/9 sm:aspect-21/9 rounded-2xl overflow-hidden bg-gray-900">
+          <div className="relative w-full h-[320px] sm:h-[480px] rounded-2xl overflow-hidden bg-gray-900">
             <Image
-              src="/berita/sembada-2.jpg"
+              src="/images/berita/sembada-2.jpg"
               alt="Praktik Penyemaian Bibit Padi Media Tray Program SEMBADA Desa Gongseng"
               fill
               className="object-cover"
               priority
-              sizes="100vw"
+              sizes="(max-width: 1200px) 100vw, 1200px"
             />
           </div>
           <figcaption className="px-3 py-2 text-xs text-gray-600 leading-relaxed italic border-l-2 border-emerald-600">
@@ -146,9 +146,9 @@ export default function BeritaSembadaPage() {
 
           {/* Inline Embedded Photo 2 */}
           <figure className="space-y-2 bg-gray-50 p-3 rounded-2xl border border-gray-200/60 my-6">
-            <div className="relative w-full aspect-16/10 rounded-xl overflow-hidden bg-gray-900">
+            <div className="relative w-full h-[280px] sm:h-[400px] rounded-xl overflow-hidden bg-gray-900">
               <Image
-                src="/berita/sembada-1.jpg"
+                src="/images/berita/sembada-1.jpg"
                 alt="Diskusi dan Pendampingan Teknis Poktan Garurejo Desa Gongseng"
                 fill
                 className="object-cover"
@@ -188,9 +188,9 @@ export default function BeritaSembadaPage() {
 
           {/* Inline Embedded Photo 3 */}
           <figure className="space-y-2 bg-gray-50 p-3 rounded-2xl border border-gray-200/60 my-6">
-            <div className="relative w-full aspect-16/10 rounded-xl overflow-hidden bg-gray-900">
+            <div className="relative w-full h-[280px] sm:h-[400px] rounded-xl overflow-hidden bg-gray-900">
               <Image
-                src="/berita/sembada-3.jpg"
+                src="/images/berita/sembada-3.jpg"
                 alt="Penataan Benih Padi di Tray Persemaian Desa Gongseng"
                 fill
                 className="object-cover"

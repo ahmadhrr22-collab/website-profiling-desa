@@ -183,9 +183,9 @@ export function LayananInformasiTabs({ kegiatanItems, pengumumanItems }: Layanan
             {/* Featured Highlighted News Card: Program SEMBADA */}
             <div className="bg-white rounded-3xl border border-emerald-500/40 shadow-xl overflow-hidden group">
               <div className="grid grid-cols-1 md:grid-cols-12 items-center">
-                <div className="md:col-span-5 relative w-full h-64 md:h-full bg-gray-900 overflow-hidden">
+                <div className="md:col-span-5 relative w-full h-64 md:h-full bg-gray-900 overflow-hidden min-h-[220px]">
                   <img
-                    src="/berita/sembada-2.jpg"
+                    src="/images/berita/sembada-2.jpg"
                     alt="Program SEMBADA Penyemaian Bibit Padi Media Tray"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
