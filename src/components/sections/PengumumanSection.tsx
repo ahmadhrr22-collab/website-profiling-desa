@@ -56,10 +56,34 @@ export function PengumumanSection({ items = [] }: PengumumanSectionProps) {
     ? items.slice(0, 3)
     : [
         {
-          id: 1,
-          judul: 'Pemberitahuan Posyandu Balita & Poswindu Juli 2026',
-          tanggalTerbit: '2026-07-05T00:00:00.000Z',
+          id: 'sembada-1',
+          judul: 'Tim KKN-T IPB Gelar Program SEMBADA: Inovasi Penyemaian Padi Media Tray Bersama Poktan Garurejo',
+          tanggalTerbit: '2026-08-11T00:00:00.000Z',
           penting: true,
+          isNewsArticle: true,
+          slug: '/layanan-informasi/sembada-penyemaian-bibit-padi',
+          konten: {
+            root: {
+              type: 'root',
+              children: [
+                {
+                  type: 'paragraph',
+                  children: [
+                    {
+                      type: 'text',
+                      text: 'Program pendampingan teknis dan praktik langsung penyemaian benih padi mandiri menggunakan media tray guna meningkatkan efisiensi benih dan ketahanan bibit petani Desa Gongseng.',
+                    },
+                  ],
+                },
+              ],
+            },
+          },
+        },
+        {
+          id: 2,
+          judul: 'Pemberitahuan Posyandu Balita & Poswindu Agustus 2026',
+          tanggalTerbit: '2026-08-05T00:00:00.000Z',
+          penting: false,
           konten: {
             root: {
               type: 'root',
@@ -78,31 +102,9 @@ export function PengumumanSection({ items = [] }: PengumumanSectionProps) {
           },
         },
         {
-          id: 2,
-          judul: 'Penyuluhan Budidaya Pertanian Organik Modern',
-          tanggalTerbit: '2026-06-20T00:00:00.000Z',
-          penting: false,
-          konten: {
-            root: {
-              type: 'root',
-              children: [
-                {
-                  type: 'paragraph',
-                  children: [
-                    {
-                      type: 'text',
-                      text: 'Diberitahukan kepada seluruh anggota kelompok tani Desa Gongseng untuk menghadiri pelatihan pembuatan pupuk organik bokashi bersama dinas pertanian setempat.',
-                    },
-                  ],
-                },
-              ],
-            },
-          },
-        },
-        {
           id: 3,
           judul: 'Rencana Gotong Royong Kebersihan Saluran Irigasi Desa',
-          tanggalTerbit: '2026-06-15T00:00:00.000Z',
+          tanggalTerbit: '2026-07-25T00:00:00.000Z',
           penting: false,
           konten: {
             root: {
@@ -201,10 +203,10 @@ export function PengumumanSection({ items = [] }: PengumumanSectionProps) {
                     <span className="text-xs text-gray-400">Tidak ada lampiran</span>
                   )}
                   <Link
-                    href={`/layanan-informasi#pengumuman-${item.id}`}
-                    className="text-xs font-bold text-gray-600 hover:text-emerald-700 transition-colors inline-flex items-center gap-0.5"
+                    href={item.slug || `/layanan-informasi#pengumuman-${item.id}`}
+                    className="text-xs font-bold text-emerald-700 hover:text-emerald-800 transition-colors inline-flex items-center gap-0.5"
                   >
-                    <span>Baca Selengkapnya</span>
+                    <span>Baca Berita Selengkapnya</span>
                     <ChevronRight className="w-3.5 h-3.5" />
                   </Link>
                 </div>

@@ -74,7 +74,7 @@ export function LayananInformasiTabs({ kegiatanItems, pengumumanItems }: Layanan
             <Bell className="w-4 h-4" />
             <span>Pengumuman & Berita</span>
             <span className="text-xs bg-emerald-50 text-emerald-800 px-2 py-0.5 rounded-full font-bold ml-1">
-              {pengumumanItems.length}
+              {pengumumanItems.length + 1}
             </span>
           </button>
         </div>
@@ -97,69 +97,69 @@ export function LayananInformasiTabs({ kegiatanItems, pengumumanItems }: Layanan
                       isExpanded && 'border-emerald-500/30 shadow-md'
                     )}
                   >
-                    {/* Header Event (Selalu Terlihat) */}
+                    {/* Header Event */}
                     <div
                       onClick={() => toggleExpandKegiatan(event.id)}
-                      className="p-6 flex flex-col sm:flex-row gap-5 items-start sm:items-center justify-between cursor-pointer select-none"
+                      className="p-6 cursor-pointer flex flex-col sm:flex-row sm:items-center justify-between gap-4 select-none"
                     >
-                      <div className="flex-grow">
-                        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-emerald-50 text-emerald-800 border border-emerald-100 mb-2.5">
-                          {KEGIATAN_KATEGORI_MAP[event.kategori] || event.kategori}
-                        </span>
-                        <h3 className="text-lg font-extrabold text-gray-900 tracking-tight leading-snug">
-                          {event.judul}
-                        </h3>
-                        
-                        {/* Ringkasan Lokasi & Tanggal */}
-                        <div className="flex flex-wrap gap-4 mt-3 text-xs text-gray-500 font-medium">
-                          <span className="flex items-center gap-1.5">
-                            <Calendar className="w-4 h-4 text-emerald-600 flex-shrink-0" />
-                            {formatDate(event.tanggal, true)}
+                      <div className="space-y-2 max-w-2xl">
+                        <div className="flex flex-wrap items-center gap-2">
+                          <span className="px-2.5 py-0.5 rounded-md text-[11px] font-extrabold uppercase tracking-wider bg-emerald-50 text-emerald-800 border border-emerald-100">
+                            {KEGIATAN_KATEGORI_MAP[event.kategori] || event.kategori}
                           </span>
-                          <span className="flex items-center gap-1.5">
-                            <Clock className="w-4 h-4 text-emerald-600 flex-shrink-0" />
+                          <span className="text-xs text-gray-500 flex items-center gap-1 font-medium">
+                            <Clock className="w-3.5 h-3.5 text-emerald-600" />
                             {event.waktu}
                           </span>
-                          <span className="flex items-center gap-1.5">
-                            <MapPin className="w-4 h-4 text-emerald-600 flex-shrink-0" />
-                            {event.lokasi}
-                          </span>
+                        </div>
+                        <h4 className="text-lg font-bold text-gray-900 leading-snug group-hover:text-emerald-700 transition-colors">
+                          {event.judul}
+                        </h4>
+                        <div className="flex items-center gap-1.5 text-xs text-gray-500">
+                          <MapPin className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                          <span>{event.lokasi}</span>
                         </div>
                       </div>
-                      <div className="text-gray-400 self-end sm:self-center">
-                        {isExpanded ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
+
+                      <div className="flex items-center gap-4 border-t sm:border-t-0 pt-3 sm:pt-0 border-gray-100">
+                        <div className="text-left sm:text-right">
+                          <span className="text-xs text-gray-400 font-medium block">Tanggal</span>
+                          <span className="text-sm font-extrabold text-emerald-900">
+                            {formatDate(event.tanggal, true)}
+                          </span>
+                        </div>
+                        <button className="p-2 rounded-full bg-gray-50 text-gray-500 hover:bg-emerald-50 hover:text-emerald-700 transition-colors">
+                          {isExpanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+                        </button>
                       </div>
                     </div>
 
-                    {/* Detail Deskripsi (Collapsible) */}
+                    {/* Detail Expandable */}
                     {isExpanded && (
-                      <div className="px-6 pb-6 border-t border-gray-50 pt-5 bg-gray-50/30 text-sm text-gray-700 leading-relaxed space-y-5">
-                        {event.deskripsi ? (
+                      <div className="px-6 pb-6 pt-2 border-t border-gray-100 bg-gray-50/40 space-y-4 animate-fade-in">
+                        <div className="text-sm text-gray-700 leading-relaxed pt-2">
                           <RichText content={event.deskripsi} />
-                        ) : (
-                          <p className="text-gray-500 italic">Tidak ada deskripsi detail untuk agenda ini.</p>
-                        )}
+                        </div>
 
-                        {/* File Lampiran */}
                         {attachment && typeof attachment === 'object' && 'url' in attachment && attachment.url && (
-                          <div className="flex items-center justify-between p-4 bg-white border border-gray-100 rounded-xl mt-4">
+                          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-4 bg-white border border-gray-200 rounded-xl gap-3">
                             <div className="flex items-center gap-3">
-                              <div className="p-2 bg-emerald-50 rounded-lg text-emerald-700 border border-emerald-100">
+                              <div className="p-2 bg-emerald-50 text-emerald-700 rounded-lg">
                                 <FileText className="w-4 h-4" />
                               </div>
                               <div>
-                                <h5 className="font-bold text-gray-900 text-xs">Dokumen Lampiran</h5>
-                                <p className="text-[10px] text-gray-400">PDF / Gambar Pendukung Agenda</p>
+                                <h5 className="font-bold text-gray-900 text-xs">Dokumen Panduan / Agenda</h5>
+                                <p className="text-[10px] text-gray-500">Berkas pendukung kegiatan desa</p>
                               </div>
                             </div>
                             <a
                               href={attachment.url}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-semibold text-white bg-emerald-600 hover:bg-emerald-700 transition-colors cursor-pointer"
+                              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-bold text-white bg-emerald-700 hover:bg-emerald-600 transition-colors shadow-sm cursor-pointer w-full sm:w-auto justify-center"
                             >
                               <Download className="w-3.5 h-3.5" />
-                              <span>Unduh Berkas</span>
+                              <span>Unduh Dokumen</span>
                             </a>
                           </div>
                         )}
@@ -178,8 +178,52 @@ export function LayananInformasiTabs({ kegiatanItems, pengumumanItems }: Layanan
               </p>
             </div>
           )
-        ) : pengumumanItems.length > 0 ? (
+        ) : (
           <div className="max-w-4xl mx-auto space-y-8 animate-fade-in-up">
+            {/* Featured Highlighted News Card: Program SEMBADA */}
+            <div className="bg-white rounded-3xl border border-emerald-500/40 shadow-xl overflow-hidden group">
+              <div className="grid grid-cols-1 md:grid-cols-12 items-center">
+                <div className="md:col-span-5 relative w-full h-64 md:h-full bg-gray-900 overflow-hidden">
+                  <img
+                    src="/berita/sembada-2.jpg"
+                    alt="Program SEMBADA Penyemaian Bibit Padi Media Tray"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <span className="absolute top-4 left-4 bg-emerald-800 text-white text-[10px] uppercase font-black tracking-widest px-3 py-1 rounded-full shadow-md">
+                    PUBLIKASI MEDIA MASSA
+                  </span>
+                </div>
+
+                <div className="md:col-span-7 p-6 md:p-8 space-y-4">
+                  <div className="flex items-center gap-2 text-xs font-semibold text-emerald-800">
+                    <Calendar className="w-4 h-4 text-emerald-600" />
+                    <span>Selasa, 11 Agustus 2026 | Tim KKN-T IPB</span>
+                  </div>
+
+                  <h3 className="text-xl font-black text-gray-950 leading-snug tracking-tight group-hover:text-emerald-700 transition-colors">
+                    Tingkatkan Efisiensi Pertanian, Tim KKN-T IPB Gelar Program SEMBADA: Inovasi Penyemaian Padi Media Tray Bersama Poktan Garurejo
+                  </h3>
+
+                  <p className="text-xs sm:text-sm text-gray-600 leading-relaxed line-clamp-3">
+                    Program pendampingan teknis dan praktik langsung penyemaian benih padi mandiri menggunakan media tray guna meningkatkan efisiensi benih dan ketahanan bibit petani Desa Gongseng.
+                  </p>
+
+                  <div className="pt-4 border-t border-gray-100 flex items-center justify-between">
+                    <span className="text-xs text-amber-700 font-bold bg-amber-50 px-2.5 py-1 rounded-md border border-amber-100">
+                      [LUARAN WAJIB] KKN-T IPB
+                    </span>
+                    <a
+                      href="/layanan-informasi/sembada-penyemaian-bibit-padi"
+                      className="inline-flex items-center gap-1 text-xs font-extrabold text-white bg-emerald-700 hover:bg-emerald-600 px-4 py-2 rounded-xl transition-all shadow-md cursor-pointer"
+                    >
+                      <span>Baca Berita Selengkapnya</span>
+                      <FileText className="w-4 h-4" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             {pengumumanItems.map((news) => {
               const isPenting = news.penting
               const attachment = news.lampiran
@@ -246,17 +290,10 @@ export function LayananInformasiTabs({ kegiatanItems, pengumumanItems }: Layanan
               )
             })}
           </div>
-        ) : (
-          <div className="text-center py-16 bg-white border border-gray-100 rounded-3xl p-8 max-w-md mx-auto shadow-sm">
-            <AlertCircle className="w-12 h-12 text-emerald-600 mx-auto mb-4" />
-            <h3 className="text-lg font-bold text-gray-950 mb-2">Pengumuman Belum Tersedia</h3>
-            <p className="text-sm text-gray-500">
-              Belum ada berita atau pengumuman resmi yang diterbitkan untuk saat ini.
-            </p>
-          </div>
         )}
       </div>
     </div>
   )
 }
+
 export default LayananInformasiTabs
