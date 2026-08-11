@@ -20,12 +20,35 @@ const inter = Inter({
 })
 
 export const metadata = {
+  metadataBase: new URL('https://www.desagongseng.site'),
   title: 'Website Profil & Informasi Desa Gongseng',
   description: 'Pusat Informasi dan Pelayanan Publik Desa Gongseng, Kecamatan Megaluh, Kabupaten Jombang, Jawa Timur.',
   icons: {
     icon: '/images/logo-kabupaten-jombang.png',
     shortcut: '/images/logo-kabupaten-jombang.png',
     apple: '/images/logo-kabupaten-jombang.png',
+  },
+  openGraph: {
+    title: 'Website Profil & Informasi Desa Gongseng',
+    description: 'Pusat Informasi dan Pelayanan Publik Desa Gongseng, Kecamatan Megaluh, Kabupaten Jombang, Jawa Timur.',
+    url: 'https://www.desagongseng.site',
+    siteName: 'Website Profil & Informasi Desa Gongseng',
+    images: [
+      {
+        url: '/images/logo-kabupaten-jombang.png',
+        width: 600,
+        height: 600,
+        alt: 'Logo Kabupaten Jombang - Desa Gongseng',
+      },
+    ],
+    locale: 'id_ID',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary',
+    title: 'Website Profil & Informasi Desa Gongseng',
+    description: 'Pusat Informasi dan Pelayanan Publik Desa Gongseng, Kecamatan Megaluh, Kabupaten Jombang, Jawa Timur.',
+    images: ['/images/logo-kabupaten-jombang.png'],
   },
   verification: {
     google: 'google1b666ff075e8c962',
